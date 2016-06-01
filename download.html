@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>下载链接跳转</title>
+</head>
+
+<body></body>
+<script type="text/javascript">
+    window.onload = function () {
+        var downapp_ua = window.navigator.userAgent.toLowerCase();
+        var downapp_androidUA = downapp_ua.match(/.*?(android).*/i); //android
+        var downapp_iosUA = downapp_ua.indexOf('iphone') >= 0 || downapp_ua.indexOf('ipod') >= 0 || downapp_ua.indexOf('ipad') >= 0; //ios
+        var downapp_wxUA = downapp_ua.match(/.*?(micromessenger\/([0-9.]+))\s*/); //wechat
+        var downapp_link = '';
+
+        ;(function() {
+            if (downapp_iosUA) {
+                if (downapp_wxUA) {
+                    downapp_link = 'http://a.app.qq.com/o/simple.jsp?pkgname=com.joyshow.joycampus.parent';
+                } else {
+                    downapp_link = 'https://appsto.re/cn/SkSZ6.i';
+                }
+            } else if (downapp_androidUA) {
+                downapp_link = 'http://a.app.qq.com/o/simple.jsp?pkgname=com.joyshow.joycampus.parent';
+            } else {
+                downapp_link = 'http://a.app.qq.com/o/simple.jsp?pkgname=com.joyshow.joycampus.parent';
+            }
+            window.location.href = downapp_link;
+        })();
+    }
+</script>
+
+</html>

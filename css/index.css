@@ -1,0 +1,37 @@
+* { padding: 0; margin: 0; }
+.clearfix:after{content:".";display:block;height:0;clear:both;visibility:hidden}
+.clearfix{*+height:1%;}
+html,body{height: 100%;}
+body { font-family: "微软雅黑"; background: #f7f7f7; }
+header{width: 100%; position: relative;}
+header>video{width: 100%; height: auto;}
+header .controls{position: absolute;width: 100px;height: 100px; top: 24%; left: 50%; margin-left: -50px; }
+header .play{background: url(../images/play.png) center no-repeat; background-size: 100px;}
+header .pause{background: url(../images/pause.png) center no-repeat; background-size: 100px;}
+header .videoTip{position: absolute;top: 55%; left: 50%; -webkit-transform:translateX(-50%); transform:translateX(-50%); font-size: 24px; color: #fff;}
+header .warning{position: absolute;top: 77%; left: 50%; -webkit-transform:translateX(-50%); transform:translateX(-50%); font-size: 24px; color: #ccc;white-space: nowrap;}
+section{overflow: hidden; padding-bottom: 140px; }
+section nav{overflow: hidden;}
+section nav>div{float:left;-webkit-box-sizing: border-box;width: 50%;height: 90px;text-align: center;line-height: 80px;font-size: 26px;color: #acacac; background: url(../images/bg1.png) center no-repeat;}
+section nav>div.active{color: #333;background: url(../images/bg2.png) center no-repeat;}
+section #brief{border-right: 1px solid #e7e7e7;}
+section .briefInfo{width: 100%; padding: 40px 0 0 40px;}
+section .briefInfo>.title{font-size: 28px; color: #000;}
+section .briefInfo>.price{display: block; margin:18px 0 25px 0;font-size: 26px; color: #ff3333;}
+section .briefInfo>p{margin-bottom: 20px; font-size: 24px; color: #99a4bf;vertical-align: top;border:none;background: transparent;}
+section .briefInfo .memo_wrap{width: 84%; position: relative;max-height: 128px;overflow: hidden;}
+section .briefInfo .memo_wrap::after{content: "..."; position: absolute; bottom: 0; right: 10px; padding-left: 30px;line-height:23px;text-align: left; height: 35px; background: linear-gradient(to right, transparent, #f7f7f7 55%);background: -webkit-linear-gradient(left, transparent, #f7f7f7 55%);background: -o-linear-gradient(left, transparent, #f7f7f7 55%);}
+section .briefInfo div{font-size: 24px; color: #99a4bf;line-height: 32px;}
+section .briefInfo div>span{float: left; }
+
+section .catalogInfo li{height: 80px; line-height: 80px; border-bottom: 1px solid #e7e7e7;padding-left:82px;background:url(../images/grayIcon.png) 20px center no-repeat; background-size: 40px 40px; font-size: 26px; color: #99a4bf; }
+section .catalogInfo li>.time{margin-left: 74px;}
+section .catalogInfo li>.course{margin-left: 70px;}
+section .catalogInfo li.playing{ background:url(../images/greenIcon.png) 20px center no-repeat; background-size: 40px 40px;color: #31c37c;}
+/*section .catalogInfo li::before{display: table-cell;content: url(../images/playIcon.png);vertical-align: middle;}*/
+
+footer{width: 100%;height: 108px; position: fixed;bottom: 0;left: 0;background: #89898b;}
+footer>img{float:left; width: 80px; height: 80px;margin: 14px 20px 0 20px;}
+footer p.p1{font-size: 28px;color: #fff; margin: 20px 0 8px 0;}
+footer p.p2{font-size: 20px;color: #ccc;  }
+footer .download{float: right;margin:22px 20px 0 0;}
