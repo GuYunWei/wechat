@@ -11,11 +11,11 @@ header>video{position: absolute; left: 0;top: 0;}
 header .controls{position: absolute;width: 100px;height: 100px; top: 24%; left: 50%; margin-left: -50px; }
 header .play{background: url(../images/play.png) center no-repeat; background-size: 100px;}
 header .pause{background: url(../images/pause.png) center no-repeat; background-size: 100px;}
-header .videoTip{position: absolute;top: 55%; left: 50%; -webkit-transform:translateX(-50%); transform:translateX(-50%); font-size: 24px; color: #fff;}
+header .videoTip{position: absolute;top: 58%; left: 50%; -webkit-transform:translateX(-50%); transform:translateX(-50%); font-size: 24px; color: #fff;}
 header .warning{position: absolute;top: 77%; left: 50%; -webkit-transform:translateX(-50%); transform:translateX(-50%); font-size: 24px; color: #ccc;white-space: nowrap;}
 section{overflow: hidden; padding-bottom: 140px; }
 section nav{overflow: hidden;}
-section nav>div{float:left;-webkit-box-sizing: border-box;width: 50%;height: 90px;text-align: center;line-height: 80px;font-size: 26px;color: #acacac; background: url(../images/bg1.png) center no-repeat;}
+section nav>div{float:left;-webkit-box-sizing: border-box;width: 50%;height: 90px;text-align: center;line-height: 80px;font-size: 26px;color: #acacac; background: url(../images/bg1.png) center no-repeat;cursor: pointer;}
 section nav>div.active{color: #333;background: url(../images/bg2.png) center no-repeat;}
 section #brief{border-right: 1px solid #e7e7e7;}
 section .briefInfo{width: 100%; padding: 40px 0 0 40px;}
