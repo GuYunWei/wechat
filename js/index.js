@@ -4,8 +4,8 @@ $(function() {
 
 function clickNav(that){
     if($(that).hasClass("active")) return false;
-    $("nav div").removeClass("active");
-    $(that).addClass("active");
+    // $("nav div").removeClass("active");
+    // $(that).addClass("active");
     $("[data-toggle='tab']").hide();
     $("[data-tab='"+that.id+"']").show();
 }
