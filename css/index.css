@@ -2,11 +2,12 @@
 .clearfix:after{content:".";display:block;height:0;clear:both;visibility:hidden}
 .clearfix{*+height:1%;}
 input {-webkit-appearance:none; /*去除input默认样式*/}
-video {-webkit-appearance:none; /*去除input默认样式*/}
+video::-webkit-media-controls {display: none !important;}
 html,body{height: 100%;}
 body { font-family: "微软雅黑"; background: #f7f7f7; }
 header{width: 100%; position: relative;}
-header>video{width: 100%; height: auto;}
+header>img{float: right;width: 100%; height: auto;}
+header>video{position: absolute; left: 0;top: 0;}
 header .controls{position: absolute;width: 100px;height: 100px; top: 24%; left: 50%; margin-left: -50px; }
 header .play{background: url(../images/play.png) center no-repeat; background-size: 100px;}
 header .pause{background: url(../images/pause.png) center no-repeat; background-size: 100px;}
