@@ -1,6 +1,7 @@
 * { padding: 0; margin: 0; }
 .clearfix:after{content:".";display:block;height:0;clear:both;visibility:hidden}
 .clearfix{*+height:1%;}
+input {-webkit-appearance:none; /*去除input默认样式*/}
 html,body{height: 100%;}
 body { font-family: "微软雅黑"; background: #f7f7f7; }
 header{width: 100%; position: relative;}
@@ -20,7 +21,7 @@ section .briefInfo>.title{font-size: 28px; color: #000;}
 section .briefInfo>.price{display: block; margin:18px 0 25px 0;font-size: 26px; color: #ff3333;}
 section .briefInfo>p{margin-bottom: 20px; font-size: 24px; color: #99a4bf;vertical-align: top;border:none;background: transparent;}
 section .briefInfo .memo_wrap{width: 87%; position: relative;max-height: 128px;overflow: hidden;}
-section .briefInfo .memo_wrap::after{content: "..."; position: absolute; bottom: 0; right: 10px; padding-left: 30px;line-height:23px;text-align: left; height: 35px; background: linear-gradient(to right, transparent, #f7f7f7 55%);background: -webkit-linear-gradient(left, transparent, #f7f7f7 55%);background: -o-linear-gradient(left, transparent, #f7f7f7 55%);}
+section .briefInfo .memo_wrap::after{content: "..."; position: absolute; bottom: 0; right: 10px; padding-left: 30px;line-height:23px;text-align: left; height: 35px; background: -webkit-linear-gradient(left, transparent, #f7f7f7 55%); background: linear-gradient(to right, transparent, #f7f7f7 55%);background: -webkit-linear-gradient(to right, transparent, #f7f7f7 55%);background: -o-linear-gradient(to right, transparent, #f7f7f7 55%);}
 section .briefInfo div{font-size: 24px; color: #99a4bf;line-height: 32px;}
 section .briefInfo div>span{float: left; }
 
