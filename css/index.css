@@ -19,7 +19,7 @@ section nav>div{float:left;-webkit-box-sizing: border-box;width: 50%;height: 90p
 section nav>div.active{color: #333;background: url(../images/bg2.png) center no-repeat;}
 section #brief{border-right: 1px solid #e7e7e7;}
 section .briefInfo{width: 100%; padding: 40px 0 0 40px;}
-section .briefInfo>.title{font-size: 28px; color: #000;}
+section .briefInfo>.title{font-size: 32px; color: #000;}
 section .briefInfo>.price{display: block; margin:18px 0 25px 0;font-size: 26px; color: #ff3333;}
 section .briefInfo>p{margin-bottom: 20px; font-size: 24px; color: #99a4bf;vertical-align: top;border:none;background: transparent;}
 section .briefInfo p.memo{width: 87%; position: relative;font-size: 24px; overflow: hidden;display: -webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:4;}
