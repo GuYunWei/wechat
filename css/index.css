@@ -15,9 +15,9 @@ header .videoTip{position: absolute;top: 58%; left: 50%; -webkit-transform:trans
 header .warning{position: absolute;top: 77%; left: 50%; -webkit-transform:translateX(-50%); transform:translateX(-50%); font-size: 24px; color: #ccc;white-space: nowrap;}
 section{overflow: hidden; padding-bottom: 140px; }
 section nav{overflow: hidden;}
-section nav>div{float:left;-webkit-box-sizing: border-box;width: 50%;height: 90px;text-align: center;line-height: 80px;font-size: 26px;color: #acacac; background: url(../images/bg1.png) center no-repeat;cursor: pointer;}
+section nav>div{float:left;-webkit-box-sizing: border-box;width: 50%;height: 90px;text-align: center;line-height: 80px;font-size: 26px;color: #acacac; background: url(../images/bg1.png) center no-repeat;background-size: 100% 90px;cursor: pointer;}
 section nav>div.active{color: #333;background: url(../images/bg2.png) center no-repeat;}
-section #brief{border-right: 1px solid #e7e7e7;}
+section #catalog{border-left: 1px solid #e7e7e7;}
 section .briefInfo{width: 100%; padding: 40px 0 0 40px;}
 section .briefInfo>.title{font-size: 28px; color: #000;}
 section .briefInfo>.price{display: block; margin:18px 0 25px 0;font-size: 26px; color: #ff3333;}
