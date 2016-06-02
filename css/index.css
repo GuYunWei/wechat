@@ -4,7 +4,7 @@
 input {-webkit-appearance:none; /*去除input默认样式*/}
 video::-webkit-media-controls {display: none !important;}
 html,body{height: 100%;}
-body { font-family: "微软雅黑"; background: #f7f7f7; }
+body { font-family: "微软雅黑"; background: #f7f7f7;}
 header{width: 100%; position: relative;}
 header>img{float: right;width: 100%; height: auto;}
 header>video{position: absolute; left: 0;top: 0;}

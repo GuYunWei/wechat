@@ -8,6 +8,7 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="css/index.css">
+    <script src="js/ort.js"></script>
 </head>
 <body>
     <header class="clearfix">
@@ -56,8 +57,17 @@
 </body>
 <script src="js/zepto.js"></script>
 <script src="js/index.js"></script>
-<script src="js/ort.js"></script>
 <script>
-//    adaptUILayout.adapt(720);
-</script>  
+    !function() {
+        !function setFontsize() {
+            document.documentElement.style.fontSize = document.documentElement.clientWidth / 16 + "px";
+        }();
+        var _t = null;
+        window.addEventListener("resize", function() {
+            clearTimeout(_t);
+            _t = setTime0ut(setFontSize, 100);
+        }, false);    
+//        setFontSize();
+    }(window);
+</script>
 </html>
