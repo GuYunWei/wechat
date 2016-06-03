@@ -16,9 +16,12 @@ header .warning{position: absolute;top: 77%; left: 50%; -webkit-transform:transl
 section{overflow: hidden; padding-bottom: 2.1875rem; }
 section nav{height: 1.3125rem; overflow: hidden;border-bottom:1px solid #e7e7e7;-moz-box-shadow:0px 2px 2px #E7E7E7; -webkit-box-shadow:0px 2px 2px #E7E7E7; box-shadow:0px 2px 2px #E7E7E7;}
 /*section nav>div{float:left;box-sizing: border-box;width: 50%;height: 1.40625rem;text-align: center;line-height: 1.40625rem;font-size: 0.40625rem;color: #acacac; background: url(../images/bg1.png) center no-repeat;background-size: 100% 1.40625rem;cursor: pointer;}*/
-section nav>div{float:left;box-sizing: border-box;width: 50%;height: 1.40625rem;text-align: center;line-height: 1.40625rem;font-size: 0.40625rem;color: #acacac;cursor: pointer;}
+section nav>div{float:left;box-sizing: border-box;width: 50%;height: 1.40625rem;text-align: center;line-height: 1.40625rem;font-size: 0.40625rem;color: #acacac;cursor: pointer;position: relative;}
 /*section nav>div.active{color: #333;background: url(../images/bg2.png) center no-repeat;}*/
 section nav>div.active{color: #333;}
+section nav>div.active i{position: absolute; bottom: 0; width: 0; height: 0; border-bottom:30px solid #000;
+        border-left:0.15625rem dashed transparent;
+        border-right:0.15625rem dashed transparent;}
 section #catalog{border-left: 1px solid #e7e7e7;}
 section .briefInfo{width: 100%; padding: 0.625rem 0 0 0.625rem;}
 section .briefInfo>.title{font-size: 0.4375rem; color: #000;}
