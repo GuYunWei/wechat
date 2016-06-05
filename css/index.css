@@ -22,7 +22,7 @@ section nav>div.active{color: #333;background: url(../images/bg2.png) 0 0 no-rep
 /*section nav>div.active i{position: absolute; bottom: 0; width: 0; height: 0; border-bottom:0.3125rem solid #e7e7e7;*/
         /*border-left:0.3125rem dashed transparent;*/
         /*border-right:0.3125rem dashed transparent;}*/
-section #catalog{border-left: 3px solid #e7e7e7;}
+section #catalog{border-left: 1px solid #e7e7e7;}
 section .briefInfo{width: 100%; padding: 0.625rem 0 0 0.625rem;}
 section .briefInfo>.title{font-size: 0.4375rem; color: #000;}
 section .briefInfo>.price{display: block; margin:0.28125rem 0 0.390625rem 0;font-size: 0.40625rem; color: #ff3333;}
