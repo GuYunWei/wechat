@@ -52,6 +52,7 @@ function playVideo () {
         	var div = data['div'] + "<script>init_player('100%', 'auto')</script>";
 
           $(".mask").css("display", "table").find(".mask_inner").append(data['div']);
+          $(".mask>video").get(0).play();
         },
         error: function (XMLHttpRequest, textStatus, errThrown) {}
     })
