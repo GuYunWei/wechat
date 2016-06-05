@@ -1,4 +1,7 @@
 $(function() {
+		document.addEventListener("WeixinJSBridgeReady", function () { 
+        document.getElementById('video').play(); 
+    }, false); 
 		getThumbnail();
     $('body').on('click', 'nav div', function(){clickNav(this);});
     $('body').on('click', 'header', playVideo);
