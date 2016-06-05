@@ -25,6 +25,7 @@ function getThumbnail () {
         },
         dataType: "jsonp",
         success: function (data) {
+        	console.log(data.list[0].url);
         	if(data.list.length > 0){
         		$("header>img").attr("src", data.list[0].url);
         	}else{
@@ -35,8 +36,7 @@ function getThumbnail () {
     })
 }
 
-function playVideo() {
-	console.log('click');
+function playVideo () {
 	$.ajax({
         url: 'https://pcs.baidu.com/rest/2.0/pcs/device',
         type: "get",
@@ -49,19 +49,14 @@ function playVideo() {
         dataType: "jsonp",
         success: function (data) {
         	console.log(data);
-        	$(".mask").show();
-          $("#video").css({"width":"100%", "height":"auto","marginLeft":"auto","marginRight":"auto"}).attr("src", data["src"]);
+        	var div = data['div'] + "<script>init_player('100%', 'auto')</script>";
 
-					document.getElementById('video').onload = function () {
-						this.play();
-					};
+          $(".mask").css("display", "table").find(".mask_inner").append(data['div']);
         },
         error: function (XMLHttpRequest, textStatus, errThrown) {}
     })
 }
 
-function intialize() {
-	console.log('tap');
-	$(".mask").show();
-	$("#video").css({"width":"100%", "height":"auto","marginLeft":"auto","marginRight":"auto"});
-}
+// function playVideo () {
+	
+// }
