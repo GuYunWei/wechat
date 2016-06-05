@@ -49,8 +49,9 @@ function playVideo () {
         dataType: "jsonp",
         //jsonpCallback: 'jsonpCallback',
         success: function (data) {
-        	var div = data['div'];
-            $(".mask").show().append(data['div']);
+        	// var div = data['div'] + "<script>init_player('100%', 'auto')</script>";
+
+          $(".mask").css("display", "table").find(".mask_inner").append(data['div']);
         },
         error: function (XMLHttpRequest, textStatus, errThrown) {}
     })
