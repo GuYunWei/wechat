@@ -38,4 +38,4 @@ footer .download>Img{font-size: 0; width: 2.578125rem; height: 1.0rem;}
 .mask{position: fixed; left: 0; top: 0; width: 1px; height: 1px; background-color: #000;z-index: 100;}
 /*.mask>.mask_inner{display:table-cell;vertical-align:middle;}*/
 /*.mask>.mask_inner>div{margin-left:auto;margin-right:auto;width:100%;}*/
-.myVideo{position: absolute;left: 50%;top: 50%;width:100%; height:auto;transform:translate(-50%,-50%);}
+.myVideo{position: absolute;left: 50%;top: 50%;width:100%; height:auto;-webkit-transform:translate(-50%,-50%);transform:translate(-50%,-50%);}
