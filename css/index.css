@@ -5,8 +5,8 @@ input {-webkit-appearance:none; /*去除input默认样式*/}
 video::-webkit-media-controls {display: none !important;}
 html,body{height: 100%;}
 body { font-family: "微软雅黑"; background: #f7f7f7; }
-header{width: 100%; position: relative;min-height: 5.609375rem;}
-header>img{float: right;width: 100%; height: auto;}
+header{width: 100%; position: relative;min-height: 5.609375rem;cursor: pointer;}
+header>img{float: right;width: 100%; height: auto;cursor: pointer;}
 header>video{position: absolute; left: 0;top: 0;}
 header .controls{position: absolute;width: 1.5625rem;height: 1.5625rem; top: 24%; left: 50%; margin-left: -0.78125rem; }
 header .play{background: url(../images/play.png) center no-repeat; background-size: 1.5625rem;}
