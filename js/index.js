@@ -36,7 +36,8 @@ $(function() {
 		playingTime = playingTime + now - updateTime
 		if(playingTime/1000 > 10){
 			video.pause();
-			video.webkitExitFullScreen();
+			video.webkitExitFullScreen(); 
+			$("#video").removeClass("fullscreen").parents(".wrap").removeClass("fullscreen");
 			alert("免费观看时间已到！");
 		};
 		// 播放次数
@@ -97,9 +98,9 @@ function intialize () {
 
 function tapVideo() {
 	if (browser.versions.ios || browser.versions.iPhone || browser.versions.iPad) {
-		$("#video").css({"width": "100%","height": "auto"}).parents(".wrap").css({"width":"100%","height":"100%"});
+		$("#video").addClass("fullscreen").parents(".wrap").addClass("fullscreen");
 	} else{
-		$("#video").css({"width": "100%","height": "auto"}).parents(".wrap").addClass("mask");
+		$("#video").addClass("fullscreen").parents(".wrap").addClass("mask");
 	}
 }
 
