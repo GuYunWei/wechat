@@ -60,8 +60,8 @@ function getThumbnail () {
         type: "get",
         data: {
             method: "thumbnail",
-            shareid: "42f904d242fd6e358a490f97a2013f23",
-            uk: "2050712015",
+            shareid: "f6861d561f8850118c537069448230ee",
+            uk: "3746924779",
             latest: '1'
         },
         dataType: "jsonp",
@@ -82,8 +82,8 @@ function intialize () {
         type: "get",
         data: {
             method: "liveplay",
-            shareid: "42f904d242fd6e358a490f97a2013f23",
-            uk: "2050712015",
+            shareid: "f6861d561f8850118c537069448230ee",
+            uk: "3746924779",
             type: 'hls'
         },
         dataType: "jsonp",
