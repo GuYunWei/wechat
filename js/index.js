@@ -6,8 +6,8 @@ $(function() {
 		intialize();
 		
     $('body').on('click', 'nav div', function(){clickNav(this);});
-    $('body').on('tap', 'header', playVideo);
-    // $('body').on('click', 'header', playVideo);
+    $('body').on('tap', 'header', tapVideo);
+    $('body').on('click', 'header', clickVideo);
 })
 
 function clickNav(that){
@@ -41,7 +41,6 @@ function getThumbnail () {
 }
 
 function intialize () {
-	// alert("tap" + Date.now());
 	$.ajax({
         url: 'https://pcs.baidu.com/rest/2.0/pcs/device',
         type: "get",
@@ -53,9 +52,7 @@ function intialize () {
         },
         dataType: "jsonp",
         success: function (data) {
-        	console.log(data);
-        	var video = $(data["div"]).find("video");
-        	console.log(video);
+        	var video = $(data["div"]).find("video").css({"width":"1px", "height": "1px"});
         	$("header").prepend(video)
         	// var avatar = $("header>img").attr("src");
         	// var html = '' +
@@ -74,9 +71,13 @@ function intialize () {
     })
 }
 
-function playVideo () {
+function tapVideo(){
+	$("video").css({"width":"100%", "height": "100%"});
+}
+
+function clickVideo () {
 	// alert("click" + Date.now());
-	$('video').addClass("myVideo").get(0).play();
+	$('video').get(0).play();
     // $.ajax({
     //     url: 'https://pcs.baidu.com/rest/2.0/pcs/device',
     //     type: "get",
