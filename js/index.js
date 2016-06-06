@@ -38,7 +38,9 @@ $(function() {
 			video.pause();
 			video.webkitExitFullScreen(); 
 			$("#video").removeClass("fullscreen").parents(".wrap").removeClass("fullscreen");
-			alert("免费观看时间已到！");
+			setTimeout(function(){
+				alert("免费观看时间已到！");
+			},300)
 		};
 		// 播放次数
 		newtimes = Math.ceil(playingTime / 1000 / duration)
