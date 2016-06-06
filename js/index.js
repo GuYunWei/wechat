@@ -34,7 +34,7 @@ $(function() {
 
 		// 播放时间
 		playingTime = playingTime + now - updateTime
-		if(playingTime/1000 > 15){
+		if(playingTime/1000 > 5){
 			alert("免费观看时间已到！");
 			video.pause();
 		};
