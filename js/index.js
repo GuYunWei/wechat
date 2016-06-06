@@ -41,7 +41,7 @@ function checkTimeUpdate(event){
 	// 播放时间
 	playingTime = playingTime + now - updateTime
 	if(playingTime/1000 > 10){
-		$("#video").removeClass("fullscreen").parents(".wrap").removeClass("fullscreen");
+		$("#video").removeClass("fullscreen").parents(".wrap").removeClass("mask");
 		video.webkitExitFullScreen(); 
 		$video.off("timeupdate");
 		video.pause();
