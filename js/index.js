@@ -34,7 +34,9 @@ $(function() {
 
 		// 播放时间
 		playingTime = playingTime + now - updateTime
-		alert(playingTime);
+		if(playingTime/1000 > 60){
+			alert("60s!");
+		};
 		// 播放次数
 		newtimes = Math.ceil(playingTime / 1000 / duration)
 
