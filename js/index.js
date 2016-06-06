@@ -13,7 +13,11 @@ $(function() {
 
 	$video.on('playing', function() {
 		// 开始播放时打点
-		$video.attr('data-updateTime', +new Date())
+		$video.attr('data-updateTime', +new Date());
+		// 累加播放时间
+		$video.on('timeupdate', function(event) {
+			checkTimeUpdate(event);
+		})
 	})
 
 	$video.on('pause', function() {
@@ -21,34 +25,36 @@ $(function() {
 		$video.removeAttr('data-updateTime')
 	})
 
-	// 累加播放时间
-	$video.on('timeupdate', function(event) {
-		var $video = $(event.target),
-			updateTime = parseInt($video.attr('data-updateTime') || 0),
-			playingTime = parseInt($video.attr('data-playingTime') || 0),
-			times = parseInt($video.attr('data-times') || 0),
-			newtimes = 0,
-			video = $video.get(0),
-			duration = parseFloat($video.attr('data-duration') || 0),
-			now = +new Date()
-
-		// 播放时间
-		playingTime = playingTime + now - updateTime
-		if(playingTime/1000 > 10){
-			// video.pause();
-			video.webkitExitFullScreen(); 
-			$("#video").removeClass("fullscreen").parents(".wrap").removeClass("fullscreen");
-			setTimeout(function(){
-				alert("免费观看时间已到！");
-			},700)
-		};
-		// 播放次数
-		newtimes = Math.ceil(playingTime / 1000 / duration)
-
-		$video.attr('data-playingTime', playingTime)
-		$video.attr('data-updateTime', now)
-	})
+	
 })
+
+function checkTimeUpdate(event){
+	var $video = $(event.target),
+		updateTime = parseInt($video.attr('data-updateTime') || 0),
+		playingTime = parseInt($video.attr('data-playingTime') || 0),
+		times = parseInt($video.attr('data-times') || 0),
+		newtimes = 0,
+		video = $video.get(0),
+		duration = parseFloat($video.attr('data-duration') || 0),
+		now = +new Date()
+
+	// 播放时间
+	playingTime = playingTime + now - updateTime
+	if(playingTime/1000 > 10){
+		$video.off("timeupdate");
+		video.pause();
+		video.webkitExitFullScreen(); 
+		$("#video").removeClass("fullscreen").parents(".wrap").removeClass("fullscreen");
+		setTimeout(function(){
+			alert("免费观看时间已到！");
+		},700)
+	};
+	// 播放次数
+	newtimes = Math.ceil(playingTime / 1000 / duration);
+
+	$video.attr('data-playingTime', playingTime);
+	$video.attr('data-updateTime', now);
+}
 
 function clickNav(that){
     if($(that).hasClass("active")) return false;
