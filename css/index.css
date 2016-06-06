@@ -2,7 +2,7 @@
 .clearfix:after{content:".";display:block;height:0;clear:both;visibility:hidden}
 .clearfix{*+height:1%;}
 input {-webkit-appearance:none; /*去除input默认样式*/}
-video::-webkit-media-controls {display: none !important;}
+/*video::-webkit-media-controls {display: none !important;}*/
 html,body{height: 100%;}
 body { font-family: "微软雅黑"; background: #f7f7f7; }
 header{width: 100%; position: relative;min-height: 5.609375rem;cursor: pointer;}
