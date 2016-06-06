@@ -50,16 +50,27 @@ $(function() {
 	})
 })
 
-var once = function (fn) {
-  var isFirst = true;
-  return function () {
-    if (isFirst) {
-      isFirst = !isFirst;
-      fn();
-    }
-  };
-};
-function test () {console.log('test')}
+function once(func) {
+      var ran,
+          result;
+      if (!isFunction(func)) {
+        throw new TypeError(funcErrorText);
+      }
+      return function() {
+        if (ran) {
+          return result;
+        }
+        ran = true;
+        result = func.apply(this, arguments);
+
+        // clear the `func` variable so the function may be garbage collected
+        func = null;
+        return result;
+      };
+ }
+ function test(){
+    alert('免费观看时间已到！');
+ }
 
 function clickNav(that){
     if($(that).hasClass("active")) return false;
