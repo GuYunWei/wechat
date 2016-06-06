@@ -59,7 +59,8 @@ function intialize () {
                     '<source src="' + data["src"] + '" type="rtmp/flv">' +
                     '</video>';
           $('.mask').append(html);
-        	// $(".mask").css({"width":"100%", "height":"100%"});
+        	$(".mask").css({"width":"100%", "height":"100%"});
+          $('#video').addClass("myVideo").get(0).play();
         	// $("#video").addClass("myVideo").attr("src", data["src"]).get(0).play();
         	// myVideo.play();
         	// var div = data['div'] + "<script>init_player('100%', 'auto')</script>";
@@ -71,7 +72,7 @@ function intialize () {
 
 function playVideo () {
 	// alert("click" + Date.now());
-	$('#video').addClass("myVideo").get(0).play();
+	// $('#video').addClass("myVideo").get(0).play();
     // $.ajax({
     //     url: 'https://pcs.baidu.com/rest/2.0/pcs/device',
     //     type: "get",
