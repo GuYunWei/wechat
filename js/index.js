@@ -34,8 +34,9 @@ $(function() {
 
 		// 播放时间
 		playingTime = playingTime + now - updateTime
-		if(playingTime/1000 > 60){
-			alert("60s!");
+		if(playingTime/1000 > 15){
+			alert("免费观看时间已到！");
+			video.stop();
 		};
 		// 播放次数
 		newtimes = Math.ceil(playingTime / 1000 / duration)
