@@ -74,7 +74,7 @@ function intialize () {
 }
 
 function tapVideo(){
-	$("video").parent().css({"width":"100%", "height": "100%"});
+	$("video").parent().addClass("mask").css({"width":"100%", "height": "100%"});
 }
 
 function clickVideo () {
