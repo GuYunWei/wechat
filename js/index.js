@@ -35,7 +35,7 @@ $(function() {
 		// 播放时间
 		playingTime = playingTime + now - updateTime
 		if(playingTime/1000 > 10){
-			video.pause();
+			// video.pause();
 			video.webkitExitFullScreen(); 
 			$("#video").removeClass("fullscreen").parents(".wrap").removeClass("fullscreen");
 			setTimeout(function(){
