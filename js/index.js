@@ -2,7 +2,7 @@ $(function() {
 		// document.addEventListener("WeixinJSBridgeReady", function () { 
   //       document.getElementById('video').play(); 
   //   }, false); 
-		getThumbnail();
+		intialize();
 		
     $('body').on('click', 'nav div', function(){clickNav(this);});
     $('body').on('tap', 'header', intialize);
@@ -53,14 +53,15 @@ function intialize () {
         dataType: "jsonp",
         success: function (data) {
         	console.log(data);
-        	var avatar = $("header>img").attr("src");
-        	var html = '' +
-                    '<video id="video" poster="' + avatar + '" preload="auto" width="100%" height="359" data-setup="{}" webkit-playsinline autoplay controls src="'+ data["src"] +'">' +
+        	$("header").append(data["div"]);
+        	// var avatar = $("header>img").attr("src");
+        	// var html = '' +
+                    // '<video id="video" poster="' + avatar + '" preload="auto" width="100%" height="359" data-setup="{}" webkit-playsinline autoplay controls src="'+ data["src"] +'">' +
                     // '<source src="' + data["src"] + '">' +
-                    '</video>';
-          $('.mask').append(html);
-        	$(".mask").css({"width":"100%", "height":"100%"});
-          $('#video').addClass("myVideo").get(0).play();
+                    // '</video>';
+          // $('.mask').append(html);
+        	// $(".mask").css({"width":"100%", "height":"100%"});
+          // $('#video').addClass("myVideo").get(0).play();
         	// $("#video").addClass("myVideo").attr("src", data["src"]).get(0).play();
         	// myVideo.play();
         	// var div = data['div'] + "<script>init_player('100%', 'auto')</script>";
