@@ -8,6 +8,39 @@ $(function() {
     $('body').on('click', 'nav div', function(){clickNav(this);});
     $('body').on('tap', 'header', tapVideo);
     $('body').on('click', 'header', clickVideo);
+
+    var $video = $("#video");
+
+	$video.on('playing', function() {
+		// 开始播放时打点
+		$video.attr('data-updateTime', +new Date())
+	})
+
+	$video.on('pause', function() {
+		// 暂停播放时清除打点
+		$video.removeAttr('data-updateTime')
+	})
+
+	// 累加播放时间
+	$video.on('timeupdate', function(event) {
+		var $video = $(event.target),
+			updateTime = parseInt($video.attr('data-updateTime') || 0),
+			playingTime = parseInt($video.attr('data-playingTime') || 0),
+			times = parseInt($video.attr('data-times') || 0),
+			newtimes = 0,
+			video = $video.get(0),
+			duration = parseFloat($video.attr('data-duration') || 0),
+			now = +new Date()
+
+		// 播放时间
+		playingTime = playingTime + now - updateTime
+		alert(playingTime);
+		// 播放次数
+		newtimes = Math.ceil(playingTime / 1000 / duration)
+
+		$video.attr('data-playingTime', playingTime)
+		$video.attr('data-updateTime', now)
+	})
 })
 
 function clickNav(that){
