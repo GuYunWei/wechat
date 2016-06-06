@@ -2,7 +2,7 @@ $(function() {
 		// document.addEventListener("WeixinJSBridgeReady", function () { 
   //       document.getElementById('video').play(); 
   //   }, false); 
-  getThumbnail();
+  	getThumbnail();
 		intialize();
 		
     $('body').on('click', 'nav div', function(){clickNav(this);});
@@ -52,10 +52,12 @@ function intialize () {
         },
         dataType: "jsonp",
         success: function (data) {
-        	var index = data["div"].indexOf("<script");
-        	var div = data["div"].substring(0, index);
-        	var video = $(div).css({"width":"1px", "height": "1px"});
-        	$("header").prepend(video);
+        	console.log(data);
+        	$("#video").attr("src", data["src"]);
+        	// var index = data["div"].indexOf("<script");
+        	// var div = data["div"].substring(0, index);
+        	// var video = $(div).css({"width":"1px", "height": "1px"});
+        	// $("header").prepend(video);
         	// var avatar = $("header>img").attr("src");
         	// var html = '' +
                     // '<video id="video" poster="' + avatar + '" preload="auto" width="100%" height="359" data-setup="{}" webkit-playsinline autoplay controls src="'+ data["src"] +'">' +
@@ -74,13 +76,14 @@ function intialize () {
 }
 
 function tapVideo(){
-	$("video").parent().addClass("mask").css({"width":"100%", "height": "100%"});
+	$("#video").parent().css({"width":"100%", "height": "100%"});
+	$("#video").parent().addClass("mask");
 }
 
 function clickVideo () {
 	// alert("click" + Date.now());
 	$('video').get(0).play();
-	$("video").parent().addClass("mask");
+	// $("video").parent().addClass("mask");
     // $.ajax({
     //     url: 'https://pcs.baidu.com/rest/2.0/pcs/device',
     //     type: "get",
