@@ -55,8 +55,8 @@ function intialize () {
         	console.log(data);
         	var avatar = $("header>img").attr("src");
         	var html = '' +
-                    '<video id="video" poster="' + avatar + '" preload="auto" width="100%" height="359" data-setup="{}" webkit-playsinline autoplay controls>' +
-                    '<source src="' + data["src"] + '" type="rtmp/flv">' +
+                    '<video id="video" poster="' + avatar + '" preload="auto" width="100%" height="359" data-setup="{}" webkit-playsinline autoplay controls src="'+ data["src"] +'">' +
+                    // '<source src="' + data["src"] + '">' +
                     '</video>';
           $('.mask').append(html);
         	$(".mask").css({"width":"100%", "height":"100%"});
