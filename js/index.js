@@ -41,7 +41,7 @@ function checkTimeUpdate(event){
 	// 播放时间
 	playingTime = playingTime + now - updateTime
 	if(playingTime/1000 > 10){
-		$("#video").removeClass("fullscreen").parents(".wrap").removeClass("mask");
+		$("#video").css({"width":"1px", "height":"1px"}).parents(".wrap").removeClass("mask");
 		video.webkitExitFullScreen(); 
 		$video.off("timeupdate");
 		video.pause();
@@ -106,9 +106,9 @@ function intialize () {
 
 function tapVideo() {
 	if (browser.versions.ios || browser.versions.iPhone || browser.versions.iPad) {
-		$("#video").addClass("fullscreen").parents(".wrap").addClass("fullscreen");
+		$("#video").css({"width":"100%", "height":"auto"}).parents(".wrap").addClass("fullscreen");
 	} else{
-		$("#video").addClass("fullscreen").parents(".wrap").addClass("mask");
+		$("#video").css({"width":"100%", "height":"auto"}).parents(".wrap").addClass("mask");
 	}
 }
 
