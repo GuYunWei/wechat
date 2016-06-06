@@ -52,36 +52,21 @@ function intialize () {
         },
         dataType: "jsonp",
         success: function (data) {
-        	console.log(data);
         	$("#video").attr("src", data["src"]);
-        	// var index = data["div"].indexOf("<script");
-        	// var div = data["div"].substring(0, index);
-        	// var video = $(div).css({"width":"1px", "height": "1px"});
-        	// $("header").prepend(video);
-        	// var avatar = $("header>img").attr("src");
-        	// var html = '' +
-                    // '<video id="video" poster="' + avatar + '" preload="auto" width="100%" height="359" data-setup="{}" webkit-playsinline autoplay controls src="'+ data["src"] +'">' +
-                    // '<source src="' + data["src"] + '">' +
-                    // '</video>';
-          // $('.mask').append(html);
-        	// $(".mask").css({"width":"100%", "height":"100%"});
-          // $('#video').addClass("myVideo").get(0).play();
-        	// $("#video").addClass("myVideo").attr("src", data["src"]).get(0).play();
-        	// myVideo.play();
-        	// var div = data['div'] + "<script>init_player('100%', 'auto')</script>";
-         //  $(".mask").css("display", "table").find(".mask_inner").append(data['div']);
         },
         error: function (XMLHttpRequest, textStatus, errThrown) {}
     })
 }
 
-function tapVideo(){
-	$("#video").css({"width":"100%", "height":"auto"}).parents(".wrap").addClass("mask");
-	// $("#video").parents(".wrap");
+function tapVideo() {
+	if (browser.versions.ios || browser.versions.iPhone || browser.versions.iPad) {
+		$("#video").css({"width": "100%","height": "auto"}).parents(".wrap").css({"width":"100%","height":"100%"});
+	} else if (browser.versions.android) {
+		$("#video").css({"width": "100%","height": "auto"}).parents(".wrap").addClass("mask");
+	}
 }
 
 function clickVideo () {
-	// alert("click" + Date.now());
 	$('video').get(0).play();
 	// $("video").parent().addClass("mask");
     // $.ajax({
@@ -106,3 +91,21 @@ function clickVideo () {
     //     error: function (XMLHttpRequest, textStatus, errThrown) {}
     // })
 }
+var browser = {
+		versions: function() {
+			var u = navigator.userAgent,
+				app = navigator.appVersion;
+			return { //移动终端浏览器版本信息 
+				trident: u.indexOf('Trident') > -1, //IE内核
+				presto: u.indexOf('Presto') > -1, //opera内核
+				webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+				gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+				mobile: !!u.match(/AppleWebKit.*Mobile.*/) || !!u.match(/AppleWebKit/), //是否为移动终端
+				ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+				android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
+				iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者QQHD浏览器
+				iPad: u.indexOf('iPad') > -1, //是否iPad
+				webApp: u.indexOf('Safari') == -1 //是否web应该程序，没有头部与底部
+			};
+		}()
+	}
