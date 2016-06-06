@@ -1,7 +1,7 @@
 $(function() {
-		document.addEventListener("WeixinJSBridgeReady", function () { 
-        document.getElementById('video').play(); 
-    }, false); 
+		// document.addEventListener("WeixinJSBridgeReady", function () { 
+  //       document.getElementById('video').play(); 
+  //   }, false); 
   	getThumbnail();
 		intialize();
 		
@@ -41,10 +41,10 @@ function checkTimeUpdate(event){
 	// 播放时间
 	playingTime = playingTime + now - updateTime
 	if(playingTime/1000 > 10){
+		$("#video").removeClass("fullscreen").parents(".wrap").removeClass("fullscreen");
+		video.webkitExitFullScreen(); 
 		$video.off("timeupdate");
 		video.pause();
-		video.webkitExitFullScreen(); 
-		$("#video").removeClass("fullscreen").parents(".wrap").removeClass("fullscreen");
 		setTimeout(function(){
 			alert("免费观看时间已到！");
 		},700)
