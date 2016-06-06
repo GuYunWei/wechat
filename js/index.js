@@ -77,10 +77,9 @@ function playVideo () {
         	// $(".mask").css({"width":"100%", "height":"100%"});
         	// $("#video").addClass("myVideo").attr("src", data["src"]).get(0).play();
         	// myVideo.play();
-        	// var div = data['div'] + "<script>init_player('100%', 'auto')</script>";
-          // $(".mask").css({"width":"100%", "height":"100%", "display":"table"}).append(div);
-          $(".mask").append(data['div']);
-          $(".mask video").get(0).play();
+        	var div = data['div'] + "<script>init_player('100%', 'auto')</script>";
+          $(".mask").css({"width":"100%", "height":"100%", "display":"table"}).append(div);
+          $(".mask video").addClass("myVideo").get(0).play();
         },
         error: function (XMLHttpRequest, textStatus, errThrown) {}
     })
