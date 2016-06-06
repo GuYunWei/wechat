@@ -40,7 +40,7 @@ function getThumbnail () {
 }
 
 function intialize () {
-	console.log("tap" + Date.now());
+	alert("tap" + Date.now());
 // 	$.ajax({
 //         url: 'https://pcs.baidu.com/rest/2.0/pcs/device',
 //         type: "get",
@@ -64,7 +64,7 @@ function intialize () {
 }
 
 function playVideo () {
-	console.log("click" + Date.now());
+	alert("click" + Date.now());
     // $.ajax({
     //     url: 'https://pcs.baidu.com/rest/2.0/pcs/device',
     //     type: "get",
