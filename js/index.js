@@ -2,6 +2,7 @@ $(function() {
 		// document.addEventListener("WeixinJSBridgeReady", function () { 
   //       document.getElementById('video').play(); 
   //   }, false); 
+  getThumbnail();
 		intialize();
 		
     $('body').on('click', 'nav div', function(){clickNav(this);});
