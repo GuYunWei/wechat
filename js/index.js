@@ -36,6 +36,7 @@ $(function() {
 		playingTime = playingTime + now - updateTime
 		if(playingTime/1000 > 10){
 			video.pause();
+			$("#video").css({"width": "1px","height": "1px"}).parents(".wrap").removeClass("mask");
 			video.webkitExitFullScreen(); 
 			alert("免费观看时间已到！");
 		};
