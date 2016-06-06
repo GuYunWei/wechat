@@ -52,8 +52,10 @@ function intialize () {
         },
         dataType: "jsonp",
         success: function (data) {
-        	var video = $(data["div"]).find("video").css({"width":"1px", "height": "1px"});
-        	$("header").prepend(video)
+        	var index = data["div"].indexOf("<script");
+        	var div = data["div"].substring(0, index);
+        	var video = $(div).css({"width":"1px", "height": "1px"});
+        	$("header").prepend(video);
         	// var avatar = $("header>img").attr("src");
         	// var html = '' +
                     // '<video id="video" poster="' + avatar + '" preload="auto" width="100%" height="359" data-setup="{}" webkit-playsinline autoplay controls src="'+ data["src"] +'">' +
@@ -72,12 +74,13 @@ function intialize () {
 }
 
 function tapVideo(){
-	$("video").css({"width":"100%", "height": "100%"});
+	$("video").parent().css({"width":"100%", "height": "100%"});
 }
 
 function clickVideo () {
 	// alert("click" + Date.now());
 	$('video').get(0).play();
+	$("video").parent().addClass("mask");
     // $.ajax({
     //     url: 'https://pcs.baidu.com/rest/2.0/pcs/device',
     //     type: "get",
