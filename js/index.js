@@ -38,7 +38,9 @@ $(function() {
 			video.pause();
 			video.webkitExitFullScreen(); 
 			$("#video").removeClass("fullscreen").parents(".wrap").removeClass("fullscreen");
-			once(test)();
+			setTimeout(function(){
+				alert("免费观看时间已到！");
+			},700)
 		};
 		// 播放次数
 		newtimes = Math.ceil(playingTime / 1000 / duration)
@@ -47,28 +49,6 @@ $(function() {
 		$video.attr('data-updateTime', now)
 	})
 })
-
-function once(func) {
-      var ran,
-          result;
-      if (!isFunction(func)) {
-        throw new TypeError(funcErrorText);
-      }
-      return function() {
-        if (ran) {
-          return result;
-        }
-        ran = true;
-        result = func.apply(this, arguments);
-
-        // clear the `func` variable so the function may be garbage collected
-        func = null;
-        return result;
-      };
- }
- function test(){
-    alert('免费观看时间已到！');
- }
 
 function clickNav(that){
     if($(that).hasClass("active")) return false;
