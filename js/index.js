@@ -18,29 +18,29 @@ function clickNav(that){
 }
 
 function getThumbnail () {
-	console.log("tap" + Date.now());
-	// $.ajax({
- //        url: 'https://pcs.baidu.com/rest/2.0/pcs/device',
- //        type: "get",
- //        data: {
- //            method: "thumbnail",
- //            shareid: "42f904d242fd6e358a490f97a2013f23",
- //            uk: "2050712015",
- //            latest: '1'
- //        },
- //        dataType: "jsonp",
- //        success: function (data) {
- //        	if(data.list.length > 0){
- //        		$("header>img").attr("src", data.list[0].url);
- //        	}else{
- //        		$("header>img").attr("src", "images/default-thumbnail.jpg");
- //        	}
- //        },
- //        error: function (XMLHttpRequest, textStatus, errThrown) {}
- //    })
+	$.ajax({
+        url: 'https://pcs.baidu.com/rest/2.0/pcs/device',
+        type: "get",
+        data: {
+            method: "thumbnail",
+            shareid: "42f904d242fd6e358a490f97a2013f23",
+            uk: "2050712015",
+            latest: '1'
+        },
+        dataType: "jsonp",
+        success: function (data) {
+        	if(data.list.length > 0){
+        		$("header>img").attr("src", data.list[0].url);
+        	}else{
+        		$("header>img").attr("src", "images/default-thumbnail.jpg");
+        	}
+        },
+        error: function (XMLHttpRequest, textStatus, errThrown) {}
+    })
 }
 
 function intialize () {
+	console.log("tap" + Date.now());
 // 	$.ajax({
 //         url: 'https://pcs.baidu.com/rest/2.0/pcs/device',
 //         type: "get",
