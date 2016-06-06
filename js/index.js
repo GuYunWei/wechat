@@ -36,8 +36,13 @@ $(function() {
 		playingTime = playingTime + now - updateTime
 		if(playingTime/1000 > 10){
 			video.pause();
-			$("#video").css({"width": "1px","height": "1px"}).parents(".wrap").removeClass("mask");
-			video.webkitExitFullScreen(); 
+			if (browser.versions.ios || browser.versions.iPhone || browser.versions.iPad) {
+				video.webkitExitFullScreen(); 
+			} else{
+				$("#video").parents(".wrap").removeClass("mask").end().css({"width": "1px","height": "1px"});
+			}
+			// $("#video").css({"width": "1px","height": "1px"}).parents(".wrap").removeClass("mask");
+			// video.webkitExitFullScreen(); 
 			alert("免费观看时间已到！");
 		};
 		// 播放次数
