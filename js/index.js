@@ -39,8 +39,8 @@ $(function() {
 			video.webkitExitFullScreen(); 
 			$("#video").removeClass("fullscreen").parents(".wrap").removeClass("fullscreen");
 			setTimeout(function(){
-				alert("免费观看时间已到！");
-			},300)
+				once(test)();
+			},500)
 		};
 		// 播放次数
 		newtimes = Math.ceil(playingTime / 1000 / duration)
@@ -49,6 +49,17 @@ $(function() {
 		$video.attr('data-updateTime', now)
 	})
 })
+
+var once = function (fn) {
+  var isFirst = true;
+  return function () {
+    if (isFirst) {
+      isFirst = !isFirst;
+      fn();
+    }
+  };
+};
+function test () {console.log('test')}
 
 function clickNav(that){
     if($(that).hasClass("active")) return false;
