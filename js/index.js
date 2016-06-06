@@ -40,31 +40,38 @@ function getThumbnail () {
 }
 
 function intialize () {
-	alert("tap" + Date.now());
-// 	$.ajax({
-//         url: 'https://pcs.baidu.com/rest/2.0/pcs/device',
-//         type: "get",
-//         data: {
-//             method: "liveplay",
-//             shareid: "e2e63b40b7355e9e8192b02588375710",
-//             uk: "878364372",
-//             type: 'hls'
-//         },
-//         dataType: "jsonp",
-//         success: function (data) {
-//         	console.log(data);
-//         	$(".mask").css({"width":"100%", "height":"100%"});
-//         	$("#video").addClass("myVideo").attr("src", data["src"]).get(0).play();
-//         	// myVideo.play();
-//         	// var div = data['div'] + "<script>init_player('100%', 'auto')</script>";
-//          //  $(".mask").css("display", "table").find(".mask_inner").append(data['div']);
-//         },
-//         error: function (XMLHttpRequest, textStatus, errThrown) {}
-//     })
+	// alert("tap" + Date.now());
+	$.ajax({
+        url: 'https://pcs.baidu.com/rest/2.0/pcs/device',
+        type: "get",
+        data: {
+            method: "liveplay",
+            shareid: "e2e63b40b7355e9e8192b02588375710",
+            uk: "878364372",
+            type: 'hls'
+        },
+        dataType: "jsonp",
+        success: function (data) {
+        	console.log(data);
+        	var avatar = $("header>img").attr("src");
+        	var html = '' +
+                    '<video id="video" poster="' + avatar + '" preload="auto" width="100%" height="359" data-setup="{}" webkit-playsinline autoplay controls>' +
+                    '<source src="' + data["src"] + '" type="rtmp/flv">' +
+                    '</video>';
+          $('.mask').append(html);
+        	// $(".mask").css({"width":"100%", "height":"100%"});
+        	// $("#video").addClass("myVideo").attr("src", data["src"]).get(0).play();
+        	// myVideo.play();
+        	// var div = data['div'] + "<script>init_player('100%', 'auto')</script>";
+         //  $(".mask").css("display", "table").find(".mask_inner").append(data['div']);
+        },
+        error: function (XMLHttpRequest, textStatus, errThrown) {}
+    })
 }
 
 function playVideo () {
-	alert("click" + Date.now());
+	// alert("click" + Date.now());
+	$('#video').addClass("myVideo").get(0).play();
     // $.ajax({
     //     url: 'https://pcs.baidu.com/rest/2.0/pcs/device',
     //     type: "get",
