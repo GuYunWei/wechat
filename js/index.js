@@ -73,12 +73,12 @@ function getCurrentVideoTime(event){
 		if(playingTime/1000 > 10){
 			$video.off("timeupdate");
 			video.pause();
-			if (browser.versions.ios || browser.versions.iPhone || browser.versions.iPad) {
+			// if (browser.versions.ios || browser.versions.iPhone || browser.versions.iPad) {
 				video.webkitExitFullScreen(); 
-				$("#video").removeClass("fullscreen");
-			} else {
-				$("#video").removeClass("mask");
-			}
+				$("#video").removeClass("fullscreen mask");
+			// } else {
+				// $("#video").removeClass("mask");
+			// }
 			// $video.off("timeupdate").removeClass("mask fullscreen").get(0).pause().webkitExitFullScreen();
 			// $("#video").removeClass("mask fullscreen");
 			// video.webkitExitFullScreen();
