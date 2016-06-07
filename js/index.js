@@ -28,7 +28,7 @@ $(function() {
 				video.webkitExitFullScreen();
 				$("#video").removeClass("fullscreen mask");
 				setTimeout(function(){
-					alert("免费观看时间已到！");
+					Message.showNotify("免费观看时间已到！",2000);
 				}, 500);
 			} else {
 				num++;
