@@ -183,7 +183,7 @@
     });
 	
 	window.Message = fakemr
-})(window,jQuery);
+})(window,Zepto);
 //        Message.showMessage(jsonResult.result.cn);
 //        Message.showNotify(jsonResult.result.cn,1000);
 /*Message.showConfirm("我是郏高阳吗？","是","不是",function(){
