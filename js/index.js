@@ -15,8 +15,10 @@ $(function() {
 		$video.on('playing', function() {
 			timer = setInterval(function() {
 				if (num >= 15) {
-					// video.pause();
-					// video.webkitExitFullScreen();
+					video.pause();
+					video.webkitExitFullScreen();
+					video.exitFullscreen();
+					video.mozCancelFullScreen();
 					// $("#video").removeClass("fullscreen mask");
 					$video.remove();
 					clearInterval(timer);
