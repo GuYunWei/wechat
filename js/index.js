@@ -76,7 +76,7 @@ function getCurrentVideoTime(event){
 			if (browser.versions.ios || browser.versions.iPhone || browser.versions.iPad) {
 				video.webkitExitFullScreen(); 
 				$("#video").removeClass("fullscreen");
-			} else{
+			} else if(browser.versions.android) {
 				$("#video").removeClass("mask");
 			}
 			$video.off("timeupdate");
