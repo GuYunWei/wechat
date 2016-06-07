@@ -20,7 +20,7 @@ $(function() {
 	$video.on('playing', function() {
 		// 开始播放时打点
 		$video.attr('data-updateTime', +new Date());
-		video.addEventListener("timeupdate", function (event) { getCurrentVideoTime(event); }, false);
+		$video.on("timeupdate", function (event) { getCurrentVideoTime(event); });
 	})
 
 	$video.on('pause', function() {
@@ -73,15 +73,18 @@ function getCurrentVideoTime(event){
 		playingTime = playingTime + now - updateTime;
 		if(playingTime/1000 > 10){
 			video.pause();
-			// if (browser.versions.ios || browser.versions.iPhone || browser.versions.iPad) {
-				// video.webkitExitFullScreen(); 
-			// } else{
-				// $("#video").parents(".wrap").removeClass("mask").end().css({"width": "1px","height": "1px"});
-			// }
-			video.removeEventListener("timeupdate", function (event) { getCurrentVideoTime(event); }, false);
-			$("#video").removeClass("mask fullscreen");
-			video.webkitExitFullScreen();
-			alert("免费观看时间已到！");
+			if (browser.versions.ios || browser.versions.iPhone || browser.versions.iPad) {
+				video.webkitExitFullScreen(); 
+				$("#video").removeClass("fullscreen");
+			} else{
+				$("#video").removeClass("mask");
+			}
+			$video.off("timeupdate");
+			// $("#video").removeClass("mask fullscreen");
+			// video.webkitExitFullScreen();
+			setTimeout(function(){
+				alert("免费观看时间已到！");
+			}, 500);
 		};
 		// 播放次数
 		newtimes = Math.ceil(playingTime / 1000 / duration);
