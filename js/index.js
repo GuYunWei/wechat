@@ -4,6 +4,7 @@ $(function() {
   //   }, false); 
   	getThumbnail();
 		intialize();
+		var num = 0, timer = null;
 		
     $('body').on('click', 'nav div', function(){clickNav(this);});
     $('body').on('tap', 'header', tapVideo);
@@ -18,13 +19,25 @@ $(function() {
 
 	$video.on('playing', function() {
 		// 开始播放时打点
-		$video.attr('data-updateTime', +new Date());
-		$video.on("timeupdate", getCurrentVideoTime);
+		// $video.attr('data-updateTime', +new Date());
+		// $video.on("timeupdate", getCurrentVideoTime);
+		timer = setInterval(function() {
+			if (num >= 15) {
+				// $video.off("timeupdate");
+				video.pause();
+				video.webkitExitFullScreen();
+				$("#video").removeClass("fullscreen mask");
+				// clearInterval(timer);
+			} else {
+				num++;
+			}
+		}, 1000)
 	})
 
 	$video.on('pause', function() {
 		// 暂停播放时清除打点
-		$video.removeAttr('data-updateTime')
+		// $video.removeAttr('data-updateTime')
+		clearInterval(timer);
 	})
 
 	// 累加播放时间
