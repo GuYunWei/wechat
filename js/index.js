@@ -16,6 +16,7 @@ $(function() {
 			timer = setInterval(function() {
 				if (num >= 15) {
 					video.pause();
+					video.src = "";
 					video.webkitExitFullScreen();
 					video.exitFullscreen();
 					video.mozCancelFullScreen();
