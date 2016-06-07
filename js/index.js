@@ -18,7 +18,7 @@ $(function() {
 					video.pause();
 					video.webkitExitFullScreen();
 					$("#video").removeClass("fullscreen mask");
-					$video.remove();
+					// $video.remove();
 					clearInterval(timer);
 					setTimeout(function(){
 						Message.showNotify("免费观看时间已到！",2000);
@@ -83,7 +83,9 @@ function intialize () {
 
 function tapVideo() {
 	if($("#video").length == 0){
-		Message.showNotify("免费观看时间已到！",2000);
+		setTimeout(function(){
+			Message.showNotify("免费观看时间已到！",2000);
+		}, 200);
 	}else{
 		if (browser.versions.ios || browser.versions.iPhone || browser.versions.iPad) {
 			$("#video").addClass("fullscreen");
