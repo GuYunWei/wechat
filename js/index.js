@@ -20,7 +20,7 @@ $(function() {
 					$("#video").removeClass("fullscreen mask");
 					clearInterval(timer);
 					setTimeout(function(){
-						// $video.remove();
+						$video.remove();
 						Message.showNotify("免费观看时间已到！",2000);
 					}, 500);
 				} else {
