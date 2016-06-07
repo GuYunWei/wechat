@@ -82,14 +82,14 @@ function intialize () {
 }
 
 function tapVideo() {
-	if($("#video") == undefined){
+	if($("#video").length == 0){
 		Message.showNotify("免费观看时间已到！",2000);
-		return false;
-	}
-	if (browser.versions.ios || browser.versions.iPhone || browser.versions.iPad) {
-		$("#video").addClass("fullscreen");
-	} else{
-		$("#video").addClass("mask");
+	}else{
+		if (browser.versions.ios || browser.versions.iPhone || browser.versions.iPad) {
+			$("#video").addClass("fullscreen");
+		} else{
+			$("#video").addClass("mask");
+		}
 	}
 }
 
