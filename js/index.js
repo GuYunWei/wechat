@@ -79,7 +79,7 @@ function getCurrentVideoTime(event){
 				// $("#video").parents(".wrap").removeClass("mask").end().css({"width": "1px","height": "1px"});
 			// }
 			video.removeEventListener("timeupdate", function (event) { getCurrentVideoTime(event); }, false);
-			$("#video").parents(".wrap").removeClass("mask").css({"width":"1px","height":"1px"});
+			$("#video").removeClass("mask fullscreen");
 			video.webkitExitFullScreen();
 			alert("免费观看时间已到！");
 		};
@@ -139,9 +139,9 @@ function intialize () {
 
 function tapVideo() {
 	if (browser.versions.ios || browser.versions.iPhone || browser.versions.iPad) {
-		$("#video").parents(".wrap").css({"width":"100%","height":"100%"});
+		$("#video").addClass("fullscreen");
 	} else{
-		$("#video").addClass("mask").css({"width":"100%","height":"100%","background":"black"});
+		$("#video").addClass("mask");
 	}
 }
 
