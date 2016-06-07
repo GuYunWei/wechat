@@ -15,9 +15,11 @@ $(function() {
 		$video.on('playing', function() {
 			timer = setInterval(function() {
 				if (num >= 15) {
-					video.pause();
-					video.webkitExitFullScreen();
-					$("#video").removeClass("fullscreen mask");
+					// video.pause();
+					// video.webkitExitFullScreen();
+					// $("#video").removeClass("fullscreen mask");
+					$video.remove();
+					clearInterval(timer);
 					setTimeout(function(){
 						Message.showNotify("免费观看时间已到！",2000);
 					}, 500);
@@ -80,6 +82,10 @@ function intialize () {
 }
 
 function tapVideo() {
+	if(!$("#video")){
+		Message.showNotify("免费观看时间已到！",2000);
+		return false;
+	}
 	if (browser.versions.ios || browser.versions.iPhone || browser.versions.iPad) {
 		$("#video").addClass("fullscreen");
 	} else{
