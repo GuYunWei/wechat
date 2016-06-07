@@ -82,7 +82,7 @@ function intialize () {
 }
 
 function tapVideo() {
-	if(!$("#video")){
+	if($("#video") == undefined){
 		Message.showNotify("免费观看时间已到！",2000);
 		return false;
 	}
