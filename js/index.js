@@ -10,10 +10,12 @@ $(function() {
     $('body').on('click', 'header', clickVideo);
 
     var $video = $("#video");
+    var video = $video.get(0);
 
 	$video.on('playing', function() {
 		// 开始播放时打点
-		$video.attr('data-updateTime', +new Date())
+		$video.attr('data-updateTime', +new Date());
+		video.addEventListener("timeupdate", function (event) { getCurrentVideoTime(event); }, false);
 	})
 
 	$video.on('pause', function() {
@@ -22,18 +24,48 @@ $(function() {
 	})
 
 	// 累加播放时间
-	$video.on('timeupdate', function(event) {
-		var $video = $(event.target),
+	// $video.on('timeupdate', function(event) {
+	// 	var $video = $(event.target),
+	// 		updateTime = parseInt($video.attr('data-updateTime') || 0),
+	// 		playingTime = parseInt($video.attr('data-playingTime') || 0),
+	// 		times = parseInt($video.attr('data-times') || 0),
+	// 		newtimes = 0,
+	// 		video = $video.get(0),
+	// 		duration = parseFloat($video.attr('data-duration') || 0),
+	// 		now = +new Date()
+
+	// 	// 播放时间
+	// 	playingTime = playingTime + now - updateTime
+	// 	if(playingTime/1000 > 10){
+	// 		video.pause();
+	// 		// if (browser.versions.ios || browser.versions.iPhone || browser.versions.iPad) {
+	// 			// video.webkitExitFullScreen(); 
+	// 		// } else{
+	// 			// $("#video").parents(".wrap").removeClass("mask").end().css({"width": "1px","height": "1px"});
+	// 		// }
+	// 		$("#video").parents(".wrap").removeClass("mask").css({"width":"1px","height":"1px"});
+	// 		video.webkitExitFullScreen();
+	// 		// alert("免费观看时间已到！");
+	// 	};
+	// 	// 播放次数
+	// 	newtimes = Math.ceil(playingTime / 1000 / duration)
+	// 	$video.attr('data-playingTime', playingTime)
+	// 	$video.attr('data-updateTime', now)
+	// })
+})
+
+function getCurrentVideoTime(event){
+	var $video = $(event.target),
 			updateTime = parseInt($video.attr('data-updateTime') || 0),
 			playingTime = parseInt($video.attr('data-playingTime') || 0),
 			times = parseInt($video.attr('data-times') || 0),
 			newtimes = 0,
 			video = $video.get(0),
 			duration = parseFloat($video.attr('data-duration') || 0),
-			now = +new Date()
+			now = +new Date();
 
 		// 播放时间
-		playingTime = playingTime + now - updateTime
+		playingTime = playingTime + now - updateTime;
 		if(playingTime/1000 > 10){
 			video.pause();
 			// if (browser.versions.ios || browser.versions.iPhone || browser.versions.iPad) {
@@ -41,17 +73,16 @@ $(function() {
 			// } else{
 				// $("#video").parents(".wrap").removeClass("mask").end().css({"width": "1px","height": "1px"});
 			// }
-			$("#video").parents(".wrap").css({"width":"1px","height":"1px"}).removeClass("mask");
+			video.removeEventListener("timeupdate", function (event) { getCurrentVideoTime(event); }, false);
+			$("#video").parents(".wrap").removeClass("mask").css({"width":"1px","height":"1px"});
 			video.webkitExitFullScreen();
 			// alert("免费观看时间已到！");
 		};
 		// 播放次数
-		newtimes = Math.ceil(playingTime / 1000 / duration)
-
-		$video.attr('data-playingTime', playingTime)
-		$video.attr('data-updateTime', now)
-	})
-})
+		newtimes = Math.ceil(playingTime / 1000 / duration);
+		$video.attr('data-playingTime', playingTime);
+		$video.attr('data-updateTime', now);
+}
 
 function clickNav(that){
     if($(that).hasClass("active")) return false;
