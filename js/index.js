@@ -17,7 +17,7 @@ $(function() {
 				if (num >= 15) {
 					video.webkitExitFullScreen();
 					$("#video").removeClass("fullscreen mask");
-					video.pause();
+					// video.pause();
 					clearInterval(timer);
 					setTimeout(function(){
 						$video.remove();
