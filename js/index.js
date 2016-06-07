@@ -19,7 +19,7 @@ $(function() {
 	$video.on('playing', function() {
 		// 开始播放时打点
 		$video.attr('data-updateTime', +new Date());
-		$video.on("timeupdate", function (event) { getCurrentVideoTime(event); });
+		$video.on("timeupdate", getCurrentVideoTime);
 	})
 
 	$video.on('pause', function() {
@@ -71,10 +71,10 @@ function getCurrentVideoTime(event){
 		// 播放时间
 		playingTime = playingTime + now - updateTime;
 		if(playingTime/1000 > 10){
-			$video.off("timeupdate").get(0).pause();
-			// $("#video").get(0).pause();
+			$video.off("timeupdate");
+			video.pause();
 			if (browser.versions.ios || browser.versions.iPhone || browser.versions.iPad) {
-				$video.get(0).webkitExitFullScreen(); 
+				video.webkitExitFullScreen(); 
 				$("#video").removeClass("fullscreen");
 			} else {
 				$("#video").removeClass("mask");
@@ -85,10 +85,10 @@ function getCurrentVideoTime(event){
 			// setTimeout(function(){
 			// 	alert("免费观看时间已到！");
 			// }, 500);
-		};
-			setInterval(function(){
+			setTimeout(function(){
 				alert(playingTime);
 			}, 1000)
+		};
 		// 播放次数
 		newtimes = Math.ceil(playingTime / 1000 / duration);
 		$video.attr('data-playingTime', playingTime);
