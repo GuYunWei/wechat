@@ -1,7 +1,4 @@
 $(function() {
-		// document.addEventListener("WeixinJSBridgeReady", function () { 
-  //       document.getElementById('video').play(); 
-  //   }, false); 
   	getThumbnail();
 		intialize();
 		var num = 0, timer = null;
@@ -14,101 +11,25 @@ $(function() {
             event.preventDefault();
         }
     })
-
     var $video = $("#video");
-
-	$video.on('playing', function() {
-		// 开始播放时打点
-		// $video.attr('data-updateTime', +new Date());
-		// $video.on("timeupdate", getCurrentVideoTime);
-		timer = setInterval(function() {
-			if (num >= 15) {
-				// $video.off("timeupdate");
-				video.pause();
-				video.webkitExitFullScreen();
-				$("#video").removeClass("fullscreen mask");
-				setTimeout(function(){
-					Message.showNotify("免费观看时间已到！",2000);
-				}, 500);
-			} else {
-				num++;
-			}
-		}, 1000)
-	})
-
-	$video.on('pause', function() {
-		// 暂停播放时清除打点
-		// $video.removeAttr('data-updateTime')
-		clearInterval(timer);
-	})
-
-	// 累加播放时间
-	// $video.on('timeupdate', function(event) {
-	// 	var $video = $(event.target),
-	// 		updateTime = parseInt($video.attr('data-updateTime') || 0),
-	// 		playingTime = parseInt($video.attr('data-playingTime') || 0),
-	// 		times = parseInt($video.attr('data-times') || 0),
-	// 		newtimes = 0,
-	// 		video = $video.get(0),
-	// 		duration = parseFloat($video.attr('data-duration') || 0),
-	// 		now = +new Date()
-
-	// 	// 播放时间
-	// 	playingTime = playingTime + now - updateTime
-	// 	if(playingTime/1000 > 10){
-	// 		video.pause();
-	// 		// if (browser.versions.ios || browser.versions.iPhone || browser.versions.iPad) {
-	// 			// video.webkitExitFullScreen(); 
-	// 		// } else{
-	// 			// $("#video").parents(".wrap").removeClass("mask").end().css({"width": "1px","height": "1px"});
-	// 		// }
-	// 		$("#video").parents(".wrap").removeClass("mask").css({"width":"1px","height":"1px"});
-	// 		video.webkitExitFullScreen();
-	// 		// alert("免费观看时间已到！");
-	// 	};
-	// 	// 播放次数
-	// 	newtimes = Math.ceil(playingTime / 1000 / duration)
-	// 	$video.attr('data-playingTime', playingTime)
-	// 	$video.attr('data-updateTime', now)
-	// })
-})
-
-function getCurrentVideoTime(event){
-	var $video = $(event.target),
-			updateTime = parseInt($video.attr('data-updateTime') || 0),
-			playingTime = parseInt($video.attr('data-playingTime') || 0),
-			times = parseInt($video.attr('data-times') || 0),
-			newtimes = 0,
-			video = $video.get(0),
-			duration = parseFloat($video.attr('data-duration') || 0),
-			now = +new Date();
-
-		// 播放时间
-		playingTime = playingTime + now - updateTime;
-		if(playingTime/1000 > 10){
-			$video.off("timeupdate");
-			video.pause();
-			// if (browser.versions.ios || browser.versions.iPhone || browser.versions.iPad) {
-				video.webkitExitFullScreen(); 
-				$("#video").removeClass("fullscreen mask");
-			// } else {
-				// $("#video").removeClass("mask");
-			// }
-			// $video.off("timeupdate").removeClass("mask fullscreen").get(0).pause().webkitExitFullScreen();
-			// $("#video").removeClass("mask fullscreen");
-			// video.webkitExitFullScreen();
-			// setTimeout(function(){
-			// 	alert("免费观看时间已到！");
-			// }, 500);
-			setTimeout(function(){
-				alert(playingTime);
+		$video.on('playing', function() {
+			timer = setInterval(function() {
+				if (num >= 15) {
+					video.pause();
+					video.webkitExitFullScreen();
+					$("#video").removeClass("fullscreen mask");
+					setTimeout(function(){
+						Message.showNotify("免费观看时间已到！",2000);
+					}, 500);
+				} else {
+					num++;
+				}
 			}, 1000)
-		};
-		// 播放次数
-		newtimes = Math.ceil(playingTime / 1000 / duration);
-		$video.attr('data-playingTime', playingTime);
-		$video.attr('data-updateTime', now);
-}
+		})
+		$video.on('pause', function() {
+			clearInterval(timer);
+		})
+})
 
 function clickNav(that){
     if($(that).hasClass("active")) return false;
