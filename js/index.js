@@ -1,12 +1,12 @@
 $(function() {
-		document.addEventListener("WeixinJSBridgeReady", function () { 
-        document.getElementById('video').play(); 
-    }, false); 
+		// document.addEventListener("WeixinJSBridgeReady", function () { 
+  //       document.getElementById('video').play(); 
+  //   }, false); 
   	getThumbnail();
 		intialize();
 		
     $('body').on('click', 'nav div', function(){clickNav(this);});
-    // $('body').on('tap', 'header', tapVideo);
+    $('body').on('tap', 'header', tapVideo);
     $('body').on('click', 'header', clickVideo);
     $('body').on('touchmove', function(event) {
         if($("#video").hasClass("mask")){
@@ -153,10 +153,7 @@ function tapVideo() {
 }
 
 function clickVideo () {
-	var html = '' +
-          '<video id="my-video" class="mask" preload="auto" autoplay controls src="'+$("#video").attr("src")+'"></video>';
-      $("html").append(html);
-	$('#my-video').get(0).play();
+	$('video').get(0).play();
 }
 
 var browser = {
