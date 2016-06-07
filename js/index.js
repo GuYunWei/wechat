@@ -15,7 +15,6 @@ $(function() {
     })
 
     var $video = $("#video");
-    var video = $video.get(0);
 
 	$video.on('playing', function() {
 		// 开始播放时打点
@@ -72,10 +71,10 @@ function getCurrentVideoTime(event){
 		// 播放时间
 		playingTime = playingTime + now - updateTime;
 		if(playingTime/1000 > 10){
-			video.pause();
+			$video.get(0).pause();
 			// $("#video").get(0).pause();
 			if (browser.versions.ios || browser.versions.iPhone || browser.versions.iPad) {
-				video.webkitExitFullScreen(); 
+				$video.get(0).webkitExitFullScreen(); 
 				$("#video").removeClass("fullscreen");
 			} else {
 				$("#video").removeClass("mask");
