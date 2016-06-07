@@ -6,10 +6,10 @@ $(function() {
 		intialize();
 		
     $('body').on('click', 'nav div', function(){clickNav(this);});
-    $('body').on('tap', 'header', tapVideo);
+    // $('body').on('tap', 'header', tapVideo);
     $('body').on('click', 'header', clickVideo);
     $('body').on('touchmove', function(event) {
-        if($(".wrap").hasClass("mask")){
+        if($("#video").hasClass("mask")){
             event.preventDefault();
         }
     })
@@ -72,19 +72,23 @@ function getCurrentVideoTime(event){
 		// 播放时间
 		playingTime = playingTime + now - updateTime;
 		if(playingTime/1000 > 10){
-			video.pause();
-			if (browser.versions.ios || browser.versions.iPhone || browser.versions.iPad) {
-				video.webkitExitFullScreen(); 
-				$("#video").removeClass("fullscreen");
-			} else if(browser.versions.android) {
-				$("#video").removeClass("mask");
-			}
-			$video.off("timeupdate");
+			// video.pause();
+			// $("#video").get(0).pause();
+			// if (browser.versions.ios || browser.versions.iPhone || browser.versions.iPad) {
+			// 	video.webkitExitFullScreen(); 
+			// 	$("#video").removeClass("fullscreen");
+			// } else if(browser.versions.android) {
+			// 	$("#video").removeClass("mask");
+			// }
+			$video.off("timeupdate").removeClass("mask fullscreen").get(0).pause().webkitExitFullScreen();
 			// $("#video").removeClass("mask fullscreen");
 			// video.webkitExitFullScreen();
-			setTimeout(function(){
-				alert("免费观看时间已到！");
-			}, 500);
+			// setTimeout(function(){
+			// 	alert("免费观看时间已到！");
+			// }, 500);
+			setInterval(function(){
+				alert(playingTime);
+			}, 1000)
 		};
 		// 播放次数
 		newtimes = Math.ceil(playingTime / 1000 / duration);
@@ -149,7 +153,10 @@ function tapVideo() {
 }
 
 function clickVideo () {
-	$('video').get(0).play();
+	var html = '' +
+          '<video id="my-video" class="mask" preload="auto" autoplay controls src="'+$("#video").attr("src")+'"></video>';
+      $("html").append(html);
+	$('#my-video').get(0).play();
 }
 
 var browser = {
