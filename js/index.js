@@ -36,14 +36,14 @@ $(function() {
 		playingTime = playingTime + now - updateTime
 		if(playingTime/1000 > 10){
 			video.pause();
-			if (browser.versions.ios || browser.versions.iPhone || browser.versions.iPad) {
-				video.webkitExitFullScreen(); 
-			} else{
-				$("#video").parents(".wrap").removeClass("mask").end().css({"width": "1px","height": "1px"});
-			}
-			// $("#video").css({"width": "1px","height": "1px"}).parents(".wrap").removeClass("mask");
-			// video.webkitExitFullScreen(); 
-			alert("免费观看时间已到！");
+			// if (browser.versions.ios || browser.versions.iPhone || browser.versions.iPad) {
+				// video.webkitExitFullScreen(); 
+			// } else{
+				// $("#video").parents(".wrap").removeClass("mask").end().css({"width": "1px","height": "1px"});
+			// }
+			$("#video").parents(".wrap").css({"width":"1px","height":"1px"}).removeClass("mask");
+			video.webkitExitFullScreen();
+			// alert("免费观看时间已到！");
 		};
 		// 播放次数
 		newtimes = Math.ceil(playingTime / 1000 / duration)
@@ -103,9 +103,9 @@ function intialize () {
 
 function tapVideo() {
 	if (browser.versions.ios || browser.versions.iPhone || browser.versions.iPad) {
-		$("#video").css({"width": "100%","height": "100%"}).parents(".wrap").css({"width":"100%","height":"100%"});
+		$("#video").parents(".wrap").css({"width":"100%","height":"100%"});
 	} else{
-		$("#video").css({"width": "100%","height": "auto"}).parents(".wrap").addClass("mask");
+		$("#video").parents(".wrap").addClass("mask");
 	}
 }
 
