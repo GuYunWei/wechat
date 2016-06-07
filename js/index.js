@@ -15,12 +15,12 @@ $(function() {
 		$video.on('playing', function() {
 			timer = setInterval(function() {
 				if (num >= 15) {
-					video.pause();
 					video.webkitExitFullScreen();
 					$("#video").removeClass("fullscreen mask");
-					// $video.remove();
+					video.pause();
 					clearInterval(timer);
 					setTimeout(function(){
+						$video.remove();
 						Message.showNotify("免费观看时间已到！",2000);
 					}, 500);
 				} else {
