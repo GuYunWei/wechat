@@ -8,6 +8,11 @@ $(function() {
     $('body').on('click', 'nav div', function(){clickNav(this);});
     $('body').on('tap', 'header', tapVideo);
     $('body').on('click', 'header', clickVideo);
+    $('body').on('touchmove', function(event) {
+        if($(".wrap").hasClass("mask")){
+            event.preventDefault();
+        }
+    })
 
     var $video = $("#video");
     var video = $video.get(0);
@@ -76,7 +81,7 @@ function getCurrentVideoTime(event){
 			video.removeEventListener("timeupdate", function (event) { getCurrentVideoTime(event); }, false);
 			$("#video").parents(".wrap").removeClass("mask").css({"width":"1px","height":"1px"});
 			video.webkitExitFullScreen();
-			// alert("免费观看时间已到！");
+			alert("免费观看时间已到！");
 		};
 		// 播放次数
 		newtimes = Math.ceil(playingTime / 1000 / duration);
