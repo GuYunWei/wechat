@@ -141,7 +141,7 @@ function tapVideo() {
 	if (browser.versions.ios || browser.versions.iPhone || browser.versions.iPad) {
 		$("#video").parents(".wrap").css({"width":"100%","height":"100%"});
 	} else{
-		$("#video").parents(".wrap").addClass("mask");
+		$("#video").addClass("mask").css({"width":"100%","height":"100%","background":"black"});
 	}
 }
 
