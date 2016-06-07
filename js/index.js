@@ -71,7 +71,7 @@ function getCurrentVideoTime(event){
 		// 播放时间
 		playingTime = playingTime + now - updateTime;
 		if(playingTime/1000 > 10){
-			$video.get(0).pause();
+			$video.off("timeupdate").get(0).pause();
 			// $("#video").get(0).pause();
 			if (browser.versions.ios || browser.versions.iPhone || browser.versions.iPad) {
 				$video.get(0).webkitExitFullScreen(); 
