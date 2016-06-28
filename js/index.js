@@ -21,7 +21,7 @@ $(function() {
 					clearInterval(timer);
 					setTimeout(function(){
 						$video.remove();
-						Message.showNotify("免费观看时间已到！",2000);
+                        tip("免费观看时间已到~");
 					}, 500);
 				} else {
 					num++;
@@ -117,3 +117,14 @@ var browser = {
 			};
 		}()
 	}
+
+function tip(content) {
+    if($('.tooltip').length > 0) return false;
+    $('body').append('<div class="tooltip fadeIn">' + content + '</div>');
+    setTimeout(function() {
+        $('.tooltip').removeClass("fadeIn");
+        setTimeout(function() {
+            $('.tooltip').remove();
+        }, 300);
+    }, 2000);
+}

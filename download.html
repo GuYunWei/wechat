@@ -1,35 +1,150 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-    <meta charset="UTF-8">
-    <title>下载链接跳转</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta name="author" content="51joyshow">
+    <title>下载乐现云课堂</title>
+    <link rel="stylesheet" type="text/css" href="http://www.51joyshow.com/statics/lx_css/download.css">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 </head>
 
-<body></body>
-<script type="text/javascript">
-    window.onload = function () {
-        var downapp_ua = window.navigator.userAgent.toLowerCase();
-        var downapp_androidUA = downapp_ua.match(/.*?(android).*/i); //android
-        var downapp_iosUA = downapp_ua.indexOf('iphone') >= 0 || downapp_ua.indexOf('ipod') >= 0 || downapp_ua.indexOf('ipad') >= 0; //ios
-        var downapp_wxUA = downapp_ua.match(/.*?(micromessenger\/([0-9.]+))\s*/); //wechat
-        var downapp_link = '';
+<body>
+    <div class="small-tips-main" style="display: none;" id="small-tips-main">
+        <h2>小贴士</h2>
+        <div class="text" id="tips">点击右上角的按钮，选择“在浏览器中打开”，就可以下载乐现云课堂啦</div>
+        <div class="arrow"></div>
+    </div>
 
-        ;(function() {
-            if (downapp_iosUA) {
-                if (downapp_wxUA) {
-                    downapp_link = 'http://a.app.qq.com/o/simple.jsp?pkgname=com.joyshow.joyshowcampus';
-                } else {
-                    downapp_link = 'https://itunes.apple.com/cn/app/le-xian-yun-shi-pin/id926243472?mt=8';
-                }
-            } else if (downapp_androidUA) {
-                downapp_link = 'http://a.app.qq.com/o/simple.jsp?pkgname=com.joyshow.joyshowcampus';
+    <div class="main">
+
+
+        <div class="hd">
+            <h1><img src="http://www.51joyshow.com/statics/lx_img/app/logo_joycampus_t.png" width="97" height="95"></h1>
+            <h2 id="hd-h2"><font color="#666">乐现云课堂</font></h2>
+            <p id="hd-p"></p>
+        </div>
+        <div class="bd">
+            <!--<a href="Wx/downloadTips" target="_blank" id="downurl">-->
+            <a href="javascript:;" id="downurl">
+                <i class="ico-arrow-download"></i>
+                <div>
+                    <p class="cn" id="bd-cn">免费下载</p>
+                    <p class="en" id="bd-en">Free Download</p>
+                </div>
+            </a>
+        </div>
+        <div class="language">
+
+        </div>
+    </div>
+    <script async="" src="//www.google-analytics.com/analytics.js"></script>
+    <script type="text/javascript">
+        var h2 = document.getElementById('hd-h2'),
+            p = document.getElementById('hd-p'),
+            cn = document.getElementById('bd-cn'),
+            en = document.getElementById('bd-en'),
+            down = document.getElementById('downurl'),
+            tip = document.getElementById('small-tips-main');
+        //mozilla/5.0(iphone;cpu iphone os 7_0_6 like mac os x) applewebkit/537.51.1 (khtml, like gecko) mobile/11b651 micromessager/5.2
+        var ua = navigator.userAgent.toLowerCase(),
+            iOS,
+            iosAppUrl = 'https://itunes.apple.com/cn/app/le-xian-yun-ke-tang/id1088742321?mt=8',
+
+            androidAppUrl = 'http://111.202.99.13/dd.myapp.com/16891/40628C3BF2AE7B64EC69B0F71F6FE5E7.apk?mkey=576cb1e8d450e29a&f=1b58&c=0&fsname=com.joyshow.joyshowcampus_1.4_5.apk&p=.apk';
+
+        if (ua.indexOf('iphone') != -1 || ua.indexOf('ipad') != -1 || ua.indexOf('ipod') != -1 || ua.indexOf('macintosh') != -1) {
+            iOS = true;
+            tips.innerText = '点击右上角的按钮，选择在“Safari”中打开，就可以下载乐现云课堂啦';
+        } else {
+            iOS = false;
+            tips.innerText = '点击右上角的按钮，选择“在浏览器中打开”，就可以下载乐现云课堂啦';
+        }
+        //        alert(ua.match(/(ipad|iphone|ipod|Macintosh)/g) == 'iphone');
+
+        if (ua.match(/MicroMessenger/i) == "micromessenger") {
+            if (iOS) {
+
             } else {
-                downapp_link = 'http://a.app.qq.com/o/simple.jsp?pkgname=com.joyshow.joyshowcampus';
+
             }
-            window.location.href = downapp_link;
-        })();
-    }
-</script>
+        } else {
+
+            if (iOS) {
+                //              down.href = iosAppUrl;
+                //                window.location.href = 'rm434209233MojiWeather://'?'rm434209233MojiWeather://':'';
+
+                window.setTimeout(function () {
+                    window.location.href = iosAppUrl;
+                }, 300); //ios safari 直接打开应用或跳到appstore
+            } else {
+                //                down.href = androidAppUrl;
+                window.setTimeout(function () {
+                    window.location.href = androidAppUrl;
+                }, 300);
+            }
+        }
+        //alert(down.href);
+
+
+        down.onclick = function () {
+            if (ua.match(/MicroMessenger/i) == "micromessenger") {
+                document.getElementById('small-tips-main').style.display = 'block';
+            } else {
+
+                if (browser.versions.iPhone || browser.versions.iPad || browser.versions.iPod) {
+
+                    window.location.href = iosAppUrl;
+                } else if (browser.versions.android) {
+                    window.location.href = androidAppUrl;
+                }
+            }
+
+
+        }
+        tip.onclick = function () {
+            document.getElementById('small-tips-main').style.display = 'none';
+        }
+
+
+
+        var browser = {
+            versions: function () {
+                var u = navigator.userAgent,
+                    app = navigator.appVersion;
+                return {
+
+                    android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1,
+
+                    iPhone: u.indexOf('iPhone') > -1,
+
+                    iPad: u.indexOf('iPad') > -1,
+                    iPod: u.indexOf('iPod') > -1,
+
+                };
+            }(),
+            language: (navigator.browserLanguage || navigator.language).toLowerCase()
+        }
+    </script>
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-43567349-14', 'www.51joyshow.com');
+        ga('send', 'pageview');
+    </script>
+</body>
 
 </html>
