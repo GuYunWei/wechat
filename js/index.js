@@ -39,6 +39,7 @@ $(function () {
         clearInterval(timer);
     });
     if (window.localStorage.getItem("isLogin")){
+        tip("成功参加该课程~");
         $("header .warning").html('您可免费观看五分钟，完整观看请<a href="###">立即购买</a>该系列课')
         $("footer").removeClass("join").addClass("download").html('<img src="images/logo.png" alt=""><a href="download.html" class="download"><img src="images/download.png" alt=""></a><p class="p1">乐现云课堂</p><p class="p2">传播知识与智慧的平台</p>');
     }
