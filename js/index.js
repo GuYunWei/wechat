@@ -84,7 +84,7 @@ function intialize () {
 function tapVideo() {
 	if($("#video").length == 0){
 		setTimeout(function(){
-			Message.showNotify("免费观看时间已到！",2000);
+            tip("免费观看时间已到~");
 		}, 200);
 	}else{
 		if (browser.versions.ios || browser.versions.iPhone || browser.versions.iPad) {
