@@ -217,5 +217,5 @@ function changePayMode(that){
 }
 
 function isAgreeItem(that){
-    $(that).
+    $(that).find("span").toggleClass("agree");
 }
