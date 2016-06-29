@@ -3,20 +3,15 @@ $(function () {
     intialize();
     var num = 0,timer = null;
 
-    $('body').on('click', 'nav div', function () {
-            clickNav(this);
-        })
+    $('body').on('click', 'nav div', function () { clickNav(this); })
         .on('tap', 'header', tapVideo)
         .on('click', 'header', clickVideo)
-        .on('touchmove', function (event) {
-            if ($("#video").hasClass("mask")) {
-                event.preventDefault();
-            }
-        })
-        .on('tap', "footer.join", function () {
-            window.location.href = './joinClass.html';
-        })
-        .on('click', "#btnSendCode", sendMessage)
+        .on('touchmove', function (event) { if ($("#video").hasClass("mask")) { event.preventDefault(); } })
+        .on('tap', 'footer.join', function () { window.location.href = './joinClass.html'; })
+        .on('click', '#btnSendCode', sendMessage)
+        .on('click', '#buyNow', function(){ $("#buyMask").removeClass("hide"); })
+        .on('click', '.purchaseInfo>p', function(){ changePayMode(this); })
+        .on('click', '#productPurchase .term', function(){ isAgreeItem(this); })
         .on('click', "#joinIn", joinClass);
     var $video = $("#video");
     $video.on('playing', function () {
@@ -38,11 +33,7 @@ $(function () {
     $video.on('pause', function () {
         clearInterval(timer);
     });
-    if (window.localStorage.getItem("isLogin")){
-        tip("成功参加该课程~");
-        $("header .warning").html('您可免费观看五分钟，完整观看请<a href="###">立即购买</a>该系列课')
-        $("footer").removeClass("join").addClass("download").html('<img src="images/logo.png" alt=""><a href="download.html" class="download"><img src="images/download.png" alt=""></a><p class="p1">乐现云课堂</p><p class="p2">传播知识与智慧的平台</p>');
-    }
+
 })
 
 function clickNav(that) {
@@ -218,4 +209,13 @@ function joinClass() {
     } else {
         tip("验证码不能为空！");
     }
+}
+
+function changePayMode(that){
+    $(that).find("img").attr("src", "images/green.png");
+    $(that).siblings().find("img").attr("src", "images/gray.png");
+}
+
+function isAgreeItem(that){
+    $(that).
 }

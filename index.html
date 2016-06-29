@@ -14,7 +14,7 @@
 <body>
     <header class="clearfix">
         <video id="video" width="1" height="1" src="" preload="true" controls>您的浏览器不支持 video 标签。</video>
-        <img src="" alt="">
+        <img src="#" alt="">
         <div class="controls play"></div>
         <div class="videoTip">即将播放：<span>王芳一年级数学课</span></div>
         <div class="warning">您可免费观看五分钟，完整观看请先<a href="joinClass.html">参加该课程</a></div>
@@ -47,20 +47,27 @@
             </li>
         </ul>
     </section>
-    <footer class="join">
-        参加该课程
-<!--
-        <img src="images/logo.png" alt="">
-        <a href="download.html" class="download">
-            <img src="images/download.png" alt="">
-        </a>
-        <p class="p1">乐现云课堂</p>
-        <p class="p2">传播知识与智慧的平台</p>
--->
-    </footer>
+    <footer class="join">参加该课程</footer>
+    <div id="buyMask" class="hide">
+        <div class="buyPanel">
+            <div class="item">30元/月<a href="./productPurchase.html">购买<span>&gt;</span></a></div>
+            <div class="item">80元/季度<a href="./productPurchase.html">购买<span>&gt;</span></a></div>
+            <div class="item">180元/半年<a href="./productPurchase.html">购买<span>&gt;</span></a></div>
+            <div class="item">250元/年<a href="./productPurchase.html">购买<span>&gt;</span></a></div>
+        </div>
+    </div>
 </body>
 <script src="js/lib/zepto.js"></script>
 <script src="js/lib/touch.js"></script>
 <script src="js/lib/index1.js"></script>
 <script src="js/index.js"></script>
+<script>
+    $(function(){
+        if (window.localStorage.getItem("isLogin")){
+            tip("成功参加该课程~");
+            $("header .warning").html('您可免费观看五分钟，完整观看请<a id="buyNow" href="javascript:0">立即购买</a>该系列课')
+            $("footer").removeClass("join").addClass("download").html('<img src="images/logo.png" alt=""><a href="download.html" class="download"><img src="images/download.png" alt=""></a><p class="p1">乐现云课堂</p><p class="p2">传播知识与智慧的平台</p>');
+        }
+    })
+</script>
 </html>
