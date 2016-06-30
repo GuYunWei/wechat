@@ -10,9 +10,14 @@ $(function () {
         .on('tap', 'footer.join', function () { window.location.href = './joinClass.html'; })
         .on('click', '#btnSendCode', sendMessage)
         .on('click', '#buyNow', function(){ $("#buyMask").removeClass("hide"); })
-        .on('click', '.purchaseInfo>p', function(){ changePayMode(this); })
         .on('click', '#productPurchase .term', function(){ isAgreeItem(this); })
-        .on('click', "#joinIn", joinClass);
+        .on('click', '#integralMask .iknow', function(){ $("#integralMask").addClass("hide"); })
+        .on('click', '#couponMask .couponItem', function(){ chooseCoupon(this); })
+        .on('click', "#joinIn", joinClass)
+        .on('click', '.purchaseInfo>p', function(){ changePayMode(this); })
+        .on('click', '.buyPanel', function(e){ e.stopPropagation(); })
+        .on('click', '.integralInfo .integral img', function(){ $("#integralMask").removeClass("hide"); })
+        .on('click', '.integralInfo>p.coupon', function(){ $("#couponMask").removeClass("hide"); });
     var $video = $("#video");
     $video.on('playing', function () {
         timer = setInterval(function () {
@@ -217,5 +222,48 @@ function changePayMode(that){
 }
 
 function isAgreeItem(that){
+    var span = $(that).find("span");
     $(that).find("span").toggleClass("agree");
+    $(span).hasClass("agree") ? $("#pay").attr("disabled", false).addClass("enable") : $("#pay").attr("disabled", true).removeClass("enable")
 }
+
+function chooseCoupon(that){
+    if($(that).hasClass("outDated") || $(that).hasClass("outUsed")) return false;
+    $("#couponMask .couponItem").removeClass("selected");
+    $(that).addClass("selected");
+    var value = $(that).find(".couponValue>span").text();
+   $(".integralInfo>.coupon>span").addClass("enable").html("可用<i id='couponFee'>" + value + "</i>元优惠券");
+   var chargeFee = $("#chargeFee").text() == "" || !$("#chargeFee").text() ? 0 : parseFloat($("#chargeFee").text());
+   var couponFee = $("#couponFee").text() == "" || !$("#couponFee").text() ? 0 : parseFloat($("#couponFee").text());
+   var integralFee = $("#integralFee").text() == "" || !$("#integralFee").text() ? 0 : parseFloat($("#integralFee").text());
+   var result = chargeFee - couponFee - integralFee;
+   console.log(result);
+    setTimeout(function(){
+        $("#couponMask").addClass("hide");
+    }, 100)
+}
+
+function openApp(type,id,uid) {
+    var downapp_ua = window.navigator.userAgent.toLowerCase();
+    var downapp_android = downapp_ua.match(/.*?(android).*/i); //android
+    var downapp_ios = downapp_ua.indexOf('iphone') >= 0 || downapp_ua.indexOf('ipod') >= 0 || downapp_ua.indexOf('ipad') >= 0; //ios
+    var downapp_wx = downapp_ua.match(/.*?(micromessenger\/([0-9.]+))\s*/); //wechat
+    var downapp_qq = downapp_ua.match(/.*?(qq\/([0-9.]+))\s*/); 
+    var downapp_weibo = downapp_ua.indexOf('weibo') >= 0; 
+    if(downapp_ios){
+        location.href = 'http://palfish.ipalfish.com/klian/web/share/applinks.html?type='+type+'&id='+id+'&refer='+uid;   
+    } else if(downapp_android){
+        if(downapp_wx){
+            location.href = 'javascript:wechatOpenTip()';
+        } else {
+            location.href = 'ipalfish://ipalfish.com/applinks?type='+type+'&id='+id;
+            setTimeout(function(){
+                location.href = 'http://www.ipalfish.com'
+            },5000)
+        }
+    }
+}
+function wechatOpenTip() {
+    $('.footer_mask').show();
+};
+

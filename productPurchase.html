@@ -1,34 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>产品购买</title>
-        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-        <meta name="apple-mobile-web-app-capable" content="yes" />
-        <script src="js/lib/flexible.js"></script>
-        <link rel="stylesheet" href="css/index.css">
-    </head>
-    <body>
-        <div id="productPurchase">
-            <div class="productInfo">
-                <p>产品名称：<span>会员基础服务</span></p>
-                <p>购买时长：<span>三个月</span></p>
-                <p>收费金额：<span>179元</span></p>
+<head>
+    <meta charset="UTF-8">
+    <title>产品购买</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <script src="js/lib/flexible.js"></script>
+    <link rel="stylesheet" href="css/index.css"></head>
+<body>
+    <div id="productPurchase">
+        <div class="productInfo">
+            <p>
+                产品名称：
+                <span>会员基础服务</span>
+            </p>
+            <p>
+                购买时长：
+                <span>三个月</span>
+            </p>
+            <p>
+                收费金额：
+                <span><i id="chargeFee">179</i>元</span>
+            </p>
+        </div>
+        <div class="purchaseInfo">
+            <p class="alipay">
+                支付宝
+                <img src="images/gray.png"></p>
+            <p class="wechat">
+                微信支付
+                <img src="images/green.png"></p>
+        </div>
+        <div class="integralInfo">
+            <p class="coupon">
+                优惠券
+                <span>无可用优惠券</span>
+                <!-- <span class="enable">可用<i>10</i>元优惠券</span> -->
+            </p>
+            <p class="integral">
+                积分
+                <!-- <span>当前50积分，满100积分可用</span> -->
+                <span>共1000积分,使用500积分&nbsp抵扣<span>￥<i id="integralFee">5.00</i></span></span>
+                <img src="images/dot.png"></p>
+        </div>
+        <p class="term">
+            <span class="agree">同意《视频购买条款》</span>
+        </p>
+        <div class="confirmPay">
+            <input id="pay" type="button" class="enable" value="确认支付179元"></div>
+    </div>
+    <div id="integralMask" class="hide">
+        <div class="integralPanel">
+            <div class="info">
+                <p>积分使用规则</p>
+                <p>1.100积分抵1元</p>
+                <p>2.每次使用不得超过500积分</p>
             </div>
-            <div class="purchaseInfo">
-                <p class="alipay">支付宝<img src="images/gray.png"></p>
-                <p class="wechat">微信支付<img src="images/green.png"></p>
+            <p class="iknow">我知道了</p>
+        </div>
+    </div>
+    <div id="couponMask" class="hide">
+        <div class="couponPanel">
+            <div class="couponItem">
+                <div class="couponWrap">
+                    <div class="couponValue">￥<span>10</span></div>
+                    <div class="couponInfo">
+                        <p>优惠券</p>
+                        <p>一次支付最多使用一张</p>
+                    </div>
+                    <div class="couponChoice"></div>
+                </div>
             </div>
-            <div class="integralInfo">
-                <p class="coupon">优惠券<span>无可用优惠券&gt;</span></p>
-                <p class="integral">积分<span>当前50积分，满100积分可用</span><img src="images/dot.png"></p>
+            <div class="couponItem selected">
+                <div class="couponWrap">
+                    <div class="couponValue">￥<span>5</span></div>
+                    <div class="couponInfo">
+                        <p>优惠券</p>
+                        <p>一次支付最多使用一张</p>
+                    </div>
+                    <div class="couponChoice"></div>
+                </div>
             </div>
-            <p class="term"><span class="agree">同意《视频购买条款》</span></p>
-            <div class="confirmPay">
-                <a id="pay" href="###">确认支付179元</a>
+            <div class="couponItem outDated">
+                <div class="couponWrap">
+                    <div class="couponValue">￥<span>10</span></div>
+                    <div class="couponInfo">
+                        <p>优惠券</p>
+                        <p>一次支付最多使用一张</p>
+                    </div>
+                    <div class="couponChoice"></div>
+                </div>
+            </div>
+            <div class="couponItem outUsed">
+                <div class="couponWrap">
+                    <div class="couponValue">￥<span>5</span></div>
+                    <div class="couponInfo">
+                        <p>优惠券</p>
+                        <p>一次支付最多使用一张</p>
+                    </div>
+                    <div class="couponChoice"></div>
+                </div>
             </div>
         </div>
-    </body>
+    </div>
+</body>
     <script src="js/lib/zepto.js"></script>
     <script src="js/lib/index1.js"></script>
     <script src="js/index.js"></script>
