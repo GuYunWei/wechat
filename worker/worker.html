@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Untitled Document</title>
+    <meta name="Author" content="" />
+  
+</head>
+
+<body>
+    <p id="tip"></p>
+    <input id="txt" type="text">
+    <input id="btn" type="button" value="Check" onclick="btn_Click()">
+    <script src="jquery-2.1.1.min.js"></script>
+    <script>
+        var worker = new Worker('./worker.js');
+
+        function btn_Click() {
+            var v = document.getElementById('txt').value;
+            if (v.length > 0) {
+                worker.postMessage(v);
+                document.getElementById('txt').value = "";
+            } else {
+                document.getElementById('txt').focus();
+                return;
+            }
+        }
+        worker.addEventListener('message', function (ev) {
+            document.getElementById('tip').innerHTML += ev.data + '<br/>';
+        })
+    </script>
+</body>
+
+</html>
