@@ -13,11 +13,12 @@ self.addEventListener('message',function(ev){
 
 function getMsgList(obj){
     var request = new XMLHttpRequest();
-    request.open('POST', 'http://www.ipalfish.com/klian/im/sync_msgs', true);
+    request.open('POST', 'https://www.ipalfish.com/klian/im/sync_msgs', true);
     request.onload = function() {
         if (request.status >= 200 && request.status < 400) {
             // Success!
             var resp = request.responseText;
+            console.log(resp);
         } else {
             // We reached our target server, but it returned an error
         }
